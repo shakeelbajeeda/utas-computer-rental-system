@@ -27,8 +27,8 @@
         </li>
 
         <li class="">
-            <a href="#dropdown-users" aria-expanded="@if($nav_active=='users') true @else false @endif" data-toggle="collapse"><i class="la la-home"></i><span>Services</span></a>
-            <ul id="dropdown-users" class="collapse @if($nav_active=='users') show @endif list-unstyled pt-0">
+            <a href="#dropdown-services" aria-expanded="@if($nav_active=='services') true @else false @endif" data-toggle="collapse"><i class="la la-home"></i><span>Services</span></a>
+            <ul id="dropdown-services" class="collapse @if($nav_active=='services') show @endif list-unstyled pt-0">
                 <li>
                     <a href="{{route('products.create')}}"><i class="la la-plus"></i><span>Add New Service</span></a>
                 </li>

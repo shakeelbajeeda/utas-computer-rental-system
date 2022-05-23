@@ -19,7 +19,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $data['nav_active'] = 'services';
+        $data['title'] = "View all Services";
+        $data['services'] = Product::all();
+        return view('supper_admin.services.index')->with($data);
     }
 
     /**
