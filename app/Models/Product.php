@@ -18,6 +18,7 @@ class Product extends Model
         "display_size",
         "no_of_usb_ports",
         "no_of_hdmi_ports",
+        "ram",
         "security_deposit",
         "insurance_amount",
         "image",
