@@ -104,7 +104,7 @@ input[type=number] {
 <!-- Begin Preloader -->
 <div id="preloader">
     <div class="canvas">
-        <img style="width: 225px;" src="{{ asset(env('PUBLIC_URL').'assets/img/logo-big.png') }}" alt="logo" class="loader-logo">
+        <img style="width: 225px;" src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" class="loader-logo">
         <div class="spinner"></div>
     </div>
 </div>
