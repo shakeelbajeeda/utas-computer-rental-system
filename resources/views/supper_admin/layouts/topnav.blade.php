@@ -23,7 +23,7 @@
                     <img src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" style="width:auto;" alt="logo" class="logo-big">
                 </div>
                 <div class="brand-image brand-small">
-                    <img src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" class="logo-small">
+                    <img src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" style="width:185px;" class="logo-small">
                 </div>
             </a>
 

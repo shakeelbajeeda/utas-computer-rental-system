@@ -67,8 +67,8 @@
                 @foreach ($services as $product)
                     <div class="col-md-3 mb-5">
                         <div class="card">
-                            @if($product->is_rented ==1)
-                            <span class="rent_out">Reserved</span>
+                            @if ($product->is_rented == 1)
+                                <span class="rent_out">Reserved</span>
                             @endif
                             <img height="230px"
                                 src="{{ asset(env('PUBLIC_URL') . 'public/images/service_images/') }}/{{ $product->image }}"
@@ -78,8 +78,10 @@
                                 <p class="card-text">${{ $product->per_hour_rate }} Per/Hour</p>
                             </div>
                             <div class="card-body text-center">
-                                <a href="{{ route('checkout_page', [$product->id]) }}" class="card-link btn btn-primary">Rent it</a>
-                                <a href="{{ route('single', [$product->id]) }}" class="card-link btn btn-primary float-end">View
+                                <a href="{{ route('checkout_page', [$product->id]) }}"
+                                    class="card-link btn btn-primary">Rent it</a>
+                                <a href="{{ route('single', [$product->id]) }}"
+                                    class="card-link btn btn-primary float-end">View
                                     Detail</a>
                             </div>
                         </div>
@@ -115,10 +117,8 @@
             <div class="row testinonials-active">
                 <div class="col-lg-4">
                     <div class="testimonial-item white-bg text-center mt-70">
-                        <!-- <img src="{{ asset('public/angvo/assets/images/testimonial-1.jpg') }}" alt="testimonial"> -->
                         <div style="height:40px;"></div>
                         <div class="star d-flex justify-content-center">
-                            <!-- <span>(</span> -->
                             <ul>
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
@@ -126,18 +126,17 @@
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
                             </ul>
-                            <!-- <span>)</span> -->
                         </div>
-                        <p>I can surely that their teachings got me out of many troubles. Sometimes I got really puzzled
-                            when I fell my account was not working in a proper way. Angvo sorted out my problems and briefed
-                            me the better ways of proceedings.</p>
-                        <h6 class="title">Mehar Waheed</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        </p>
+                        <h6 class="title">Jack</h6>
                         <i class="fal fa-quote-right"></i>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="testimonial-item white-bg text-center mt-70">
-                        <!-- <img src="{{ asset('public/angvo/assets/images/testimonial-2.jpg') }}" alt="testimonial"> -->
                         <div style="height:40px;"></div>
                         <div class="star d-flex justify-content-center">
                             <ul>
@@ -148,16 +147,16 @@
                                 <li><i class="fas fa-star"></i></li>
                             </ul>
                         </div>
-                        <p>Now I do not have to face that panic which I used to bear in the start of my business. Things are
-                            good now because of Angvo. Before contacting this company, It was so much difficult for me to
-                            manage the important tasks.</p>
-                        <h6 class="title">Ch Yasir Ali</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        </p>
+                        <h6 class="title">William</h6>
                         <i class="fal fa-quote-right"></i>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="testimonial-item white-bg text-center mt-70">
-                        <!-- <img src="{{ asset('public/angvo/assets/images/testimonial-3.jpg') }}" alt="testimonial"> -->
                         <div style="height:40px;"></div>
                         <div class="star d-flex justify-content-center">
                             <ul>
@@ -168,16 +167,16 @@
                                 <li><i class="fas fa-star"></i></li>
                             </ul>
                         </div>
-                        <p>The sustainability in my business I wanted to see and feel my winning charm. That I have gained
-                            because of Angvo, because I run my business from my home, I do not have such a huge team to
-                            manage such important tasks.</p>
-                        <h6 class="title">Dr. Irshad CH</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        </p>
+                        <h6 class="title">Lucas</h6>
                         <i class="fal fa-quote-right"></i>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="testimonial-item white-bg text-center mt-70">
-                        <!--        <img src="{{ asset('public/angvo/assets/images/testimonial-4.jpg') }}" alt="testimonial"> -->
                         <div style="height:40px;"></div>
                         <div class="star d-flex justify-content-center">
                             <ul>
@@ -188,30 +187,11 @@
                                 <li><i class="fas fa-star"></i></li>
                             </ul>
                         </div>
-                        <p>Sometimes we feel hesitate to trust a company with which we have not worked before. Same was the
-                            feeling of mine but before working with Angvo I checked their profile thoroughly. Then I
-                            contacted this company Angvo.</p>
-                        <h6 class="title">Ayesha</h6>
-                        <i class="fal fa-quote-right"></i>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-item white-bg text-center mt-70">
-                        <!-- <img src="{{ asset('public/angvo/assets/images/testimonial-5.jpg') }}" alt="testimonial"> -->
-                        <div style="height:40px;"></div>
-                        <div class="star d-flex justify-content-center">
-                            <ul>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <p>In difficult times, when you find someone who can get you out of the problem and shows you the
-                            clear path to explore then there you find the opportunity. I found the one when I came to know
-                            about the services and the reputation of Angvo.</p>
-                        <h6 class="title">Sardar Waqas</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        </p>
+                        <h6 class="title">Thomas</h6>
                         <i class="fal fa-quote-right"></i>
                     </div>
                 </div>
@@ -220,58 +200,4 @@
     </section>
 
     <!--====== TESTIMONIALS PART ENDS ======-->
-
-    <!--====== BRAND PART START ======-->
-
-    <!--   <div class="brand-area pb-130 pt-130">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <div class="section-title text-center">
-                                <h2 class="title"><span>Our Trusted <span> Partners</span></span></h2>
-                                <p>We have many trusted partners</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row brand-active">
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-3.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-4.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-5.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="brand-item text-center">
-                                    <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-    <!--====== BRAND PART ENDS ======-->
 @endsection
