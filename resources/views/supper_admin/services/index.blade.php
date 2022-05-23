@@ -67,7 +67,7 @@
             <div class="col-xl-12">
                 <!-- Form -->
                 <div class="widget has-shadow">
-                   
+
                     <div class="widget-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="active_packages">
@@ -75,46 +75,31 @@
                                     <table id="" class="export-table table table-bordered mb-0">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>Service</th>
-                                            <th>Vendors</th>
-                                            @if(auth()->user()->is_user_approved != 9)
-                                            <th>Purchase Price</th>
-                                            @endif
-                                            <!-- <th>Retail Price</th> -->
-                                            @if(auth()->user()->is_user_approved != 9)
-                                            <th>Is show at home?</th>
-                                            @endif
-                                            <th>Created At</th>
+                                            <th>Category</th>
+                                            <th>Title</th>
+                                            <th>Brand</th>
+                                            <th>Per Hour Rent</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if(isset($packages) and sizeof($packages) > 0):?>
-                                        <?php foreach ($packages as $key => $p):?>
+                                        <?php if(isset($services) and sizeof($services) > 0):?>
+                                        <?php foreach ($services as $key => $p):?>
                                         <tr>
+                                            <td>{{$p->category}}</td>
                                             <td>{{$p->title}}</td>
+                                            <td>{{$p->brand}}</td>
+                                            <td>${{$p->per_hour_rate}}</td>
                                             <td>
-                                                @if(isset($p->vendors) and sizeof($p->vendors)>0)
-                                                @foreach($p->vendors as $v)
-                                                {{@$v->vendor_user->first_name}} {{@$v->vendor_user->last_name}}
-                                                @if(!$loop->last) , @endif
-                                                @endforeach
-                                                @endif
-                                            </td>
-                                            @if(auth()->user()->is_user_approved != 9)
-                                            <td>{{$p->vendor_price}} USD</td>
-                                            @endif
-                                            @if(auth()->user()->is_user_approved != 9)
-                                            <td>
-                                                @if($p->is_show_at_home)
-                                                Yes
+                                                @if($p->is_rented == 1)
+                                                <span class="badge badge-danger p-1">Rented</span>
                                                 @else
-                                                No
+                                                <span class="badge badge-primary p-1">Available</span>
                                                 @endif
                                             </td>
-                                            @endif
-                                            <td>{{date('M-d-Y',strtotime($p->created_at))}}</td>
-                                            <td class="td-actions"> <a href="{{route('services.edit',[$p->id])}}" title="Update Service"><i class="la la-edit edit"></i></a>
+
+                                            <td class="td-actions"> <a href="{{route('products.edit',[$p->id])}}" title="Update Service"><i class="la la-edit edit"></i></a>
                                                            <!--  <a href="javascript:void(0);"id="{{$p->id}}" onclick="delete_item(this);" title="Delete Items"><i class="la la-close delete"></i></a>
                                                           </td> -->
                                         </tr>
@@ -150,7 +135,7 @@
             {
                 $('#active_packages').hide();
                 $('#expired_packages').show();
-                
+
             }
             $(e).addClass('active');
         }
