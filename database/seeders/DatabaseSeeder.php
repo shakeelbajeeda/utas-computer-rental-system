@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call([
+            ProductSeeder::class,
+        ]);
         DB::table('users')->insert([
             'name' => 'waheed',
             'email'=> 'waheed@nodesol.com',

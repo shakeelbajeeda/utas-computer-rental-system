@@ -64,111 +64,28 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
+                @foreach ($services as $product)
+                    <div class="col-md-3 mb-5">
+                        <div class="card">
+                            @if($product->is_rented ==1)
+                            <span class="rent_out">Reserved</span>
+                            @endif
+                            <img height="230px"
+                                src="{{ asset(env('PUBLIC_URL') . 'public/images/service_images/') }}/{{ $product->image }}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $product->title }}</h5>
+                                <p class="card-text">${{ $product->per_hour_rate }} Per/Hour</p>
+                            </div>
+                            <div class="card-body text-center">
+                                <a href="{{ route('checkout_page', [$product->id]) }}" class="card-link btn btn-primary">Rent it</a>
+                                <a href="{{ route('single', [$product->id]) }}" class="card-link btn btn-primary float-end">View
+                                    Detail</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mac Book Pro</h5>
-                            <p class="card-text">$10 Per/hour</p>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="#" class="card-link btn btn-primary">Rent it</a>
-                            <a href="#" class="card-link btn btn-primary float-end">View Detail</a>                        </div>
-                    </div>
-                </div>
+                @endforeach
+
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <center>
@@ -307,54 +224,54 @@
     <!--====== BRAND PART START ======-->
 
     <!--   <div class="brand-area pb-130 pt-130">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="section-title text-center">
-                            <h2 class="title"><span>Our Trusted <span> Partners</span></span></h2>
-                            <p>We have many trusted partners</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row brand-active">
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-3.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-4.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-5.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="brand-item text-center">
-                                <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="section-title text-center">
+                                <h2 class="title"><span>Our Trusted <span> Partners</span></span></h2>
+                                <p>We have many trusted partners</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> -->
+                    <div class="container">
+                        <div class="row brand-active">
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-3.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-4.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-5.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-1.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="brand-item text-center">
+                                    <img src="{{ asset('public/angvo/assets/images/brand-2.jpg') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
 
     <!--====== BRAND PART ENDS ======-->
 @endsection

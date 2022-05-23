@@ -6,23 +6,25 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use File;
 use App\Complaint;
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     public function index()
     {
-
-        return view('website.index');
+        $data['services']= Product::all()->take(10);
+    	return view('website.index')->with($data);
     }
     public function services()
     {
-    	$data['services']= [];
+    	$data['services']= Product::all();
     	return view('website.services')->with($data);
     }
 
-    public function checkout()
+    public function checkout($id)
     {
-    	$data['services']= [];
-    	return view('website.order')->with($data);
+        $data['service'] = Product::findOrFail($id);
+        return view('website.order')->with($data);
     }
 
     public function general_complaint()
@@ -43,9 +45,9 @@ class HomeController extends Controller
         $this->send_general_email($mail_data);
         return redirect()->back();
     }
-    public function single($slug)
+    public function single($id)
     {
-        $data['test'] = [];
+        $data['service'] = Product::findOrFail($id);
             return view('website.service_detail')->with($data);
         
     }

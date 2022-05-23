@@ -5,7 +5,7 @@
 
       .header-nav {
           background: white;
-          top: 0px!important;
+          top: 0px !important;
       }
 
       .header-nav .navigation .navbar .navbar-nav .nav-item a {
@@ -119,8 +119,9 @@
       .banner-area.page-title .banner-bg {
           height: 400px;
       }
+
       .banner-area::before {
-          height:0% !important;
+          height: 0% !important;
       }
 
       .them_bg_color {
@@ -140,6 +141,17 @@
           position: absolute;
           right: 22%;
           z-index: 444;
+      }
+
+      .rent_out {
+          position: absolute;
+          color: white;
+          top: 100px;
+          left: -1px;
+          padding: 6px;
+          font-size: 17px;
+          border-radius: 0px 18px 0px 0px;
+          background:rgb(24 45 83);
       }
 
       .banner-shape-1,
@@ -212,7 +224,8 @@
                       <div class="navigation">
                           <nav class="navbar navbar-expand-lg navbar-light ">
                               <a class="navbar-brand" href="{{ url('/') }}"><img style="width:200px;"
-                                      src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/logo.png') }}" alt=""></a>
+                                      src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/logo.png') }}"
+                                      alt=""></a>
 
                               <!-- logo -->
                               <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -229,7 +242,8 @@
                                           <a class="nav-link" href="{{ route('home_page') }}">Home </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a class="nav-link" href="{{ route('services') }}">Rental Services </a>
+                                          <a class="nav-link" href="{{ route('services') }}">Rental Services
+                                          </a>
                                       </li>
                                       <li class="nav-item">
                                           @if (auth()->check())
@@ -251,7 +265,7 @@
                                               <a class="nav-link" href="{{ route('register') }}">Register </a>
                                           </li>
                                       @endif
-                                    
+
                                   </ul>
                               </div> <!-- navbar collapse -->
                               <div class="navbar-btn d-none d-sm-block">

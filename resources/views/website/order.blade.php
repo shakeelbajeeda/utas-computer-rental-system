@@ -1,7 +1,9 @@
 ﻿@extends('layouts.website')
 @section('content')
     <style>
-
+  .rent_out{
+      left: 40% !important;
+  }
     </style>
     <!--====== PAGE TITLE PART START ======-->
 
@@ -22,18 +24,21 @@
                 <div class="row my-5">
                     <div class="col-md-6">
                         <div>
+                            @if($service->is_rented ==1)
+                            <span class="rent_out">Reserved</span>
+                            @endif
                             <img width="100%" class="rounded"
-                                src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}">
+                                src="{{ asset(env('PUBLIC_URL') . 'public/images/service_images/') }}/{{ $service->image }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class=" mb-4">
                             <div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><b class="pr-5">Brand: </b>Apple</li>
-                                    <li class="list-group-item"><b class="pr-5">Name: </b>Mac Book Pro</li>
-                                    <li class="list-group-item"><b class="pr-5">Rate Per/Hour: </b>$10</li>
-                                    <li class="list-group-item"><b class="pr-5">Security Deposit: </b>$5</li>
+                                    <li class="list-group-item"><b class="pr-5">Brand: </b>{{$service->brand}}</li>
+                                    <li class="list-group-item"><b class="pr-5">Name: </b>{{$service->title}}</li>
+                                    <li class="list-group-item"><b class="pr-5">Rate Per/Hour: </b>${{$service->per_hour_rate}}</li>
+                                    <li class="list-group-item"><b class="pr-5">Security Deposit: </b>${{$service->security_deposit}}</li>
                                     <li class="list-group-item"><b class="pr-5">Select Hours: </b>
                                         <select class="form-control" aria-label="Default select example">
                                             <option selected>Select Hours</option>
