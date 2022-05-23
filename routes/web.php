@@ -41,7 +41,8 @@ Route::get('view-all-managers', 'backend\UserController@web_managers')->name('we
 
 Route::get('user/dashboard', 'user\HomeController@index')->name('user_dashboard');
 Route::get('user/my-recharge-history', 'user\HomeController@my_recharge_history')->name('my_recharge_history');
-Route::get('/checkout/{id?}', 'HomeController@checkout')->name('checkout_page');
+Route::get('/checkout/{id?}', 'HomeController@checkout')->name('checkout_page')->middleware('auth');
+Route::post('/confirm-order', 'CheckoutController@confirm_order')->name('confirm_order')->middleware('auth');
 
 
 Route::get('/service-detail/{id?}', 'HomeController@single')->name('single');

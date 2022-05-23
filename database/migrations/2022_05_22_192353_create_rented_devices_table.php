@@ -16,12 +16,20 @@ class CreateRentedDevicesTable extends Migration
         Schema::create('rented_devices', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->decimal('price', 8, 2);
-            $table->decimal('unit_price', 8, 2);
-            $table->date('booking_date');
-            $table->date('return_date');
-            $table->tinyInteger('return_status');
+            $table->bigInteger('product_id');
+            $table->decimal('total_price', 8, 2);
+            $table->decimal('per_hour_rate', 8, 2);
+            $table->date('booking_date')->nullable();
+            $table->date('return_date')->nullable();
+            $table->tinyInteger('is_returned')->default(0);
+            $table->string('status')->nullable();
             $table->tinyInteger('is_insurance');
+            $table->decimal('insurance_amount', 8, 2)->default(0);
+            $table->decimal('security', 8, 2)->default(0);
+            $table->decimal('discount', 8, 2)->default(0);
+            $table->decimal('damage_amount', 8, 2)->default(0);
+            $table->decimal('late_fee', 8, 2)->default(0);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

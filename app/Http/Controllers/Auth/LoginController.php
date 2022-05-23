@@ -47,6 +47,5 @@ class LoginController extends Controller
             return route('dashboard');
 
         }
-
     }
 }
