@@ -15,9 +15,16 @@ class HomeController extends Controller
     }
     public function services()
     {
-    	$data['services']=Package::where('is_active',1)->OrderBy('order_at','asc')->paginate(100);
-    	return view('angvo.services')->with($data);
+    	$data['services']= [];
+    	return view('website.services')->with($data);
     }
+
+    public function checkout()
+    {
+    	$data['services']= [];
+    	return view('website.order')->with($data);
+    }
+
     public function general_complaint()
     {
         $data['services']=Package::all();
@@ -38,15 +45,9 @@ class HomeController extends Controller
     }
     public function single($slug)
     {
-        $data['service']=Package::where('slug',$slug)->first();
-        if(!empty($data['service']))
-        {
-            return view('angvo.service_detail')->with($data);
-        }
-        else
-        {
-            abort(404, 'Page Not Found');
-        }
+        $data['test'] = [];
+            return view('website.service_detail')->with($data);
+        
     }
     private function upload_file($img_file,$folder_name)
     {

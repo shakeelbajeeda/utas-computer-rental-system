@@ -2,25 +2,25 @@
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-    <title>Login | Angvo</title>
+    <title>Login | UTAS</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
      <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{asset('public/angvo/assets/images/favicon.png')}}" type="image/png">
+    <link rel="shortcut icon" href="{{asset(env('PUBLIC_URL'). 'website/assets/images/favicon.png')}}" type="image/png">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/vendor/animate/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/vendor/animate/animate.css')}}">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/vendor/css-hamburgers/hamburgers.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/vendor/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/vendor/select2/select2.min.css')}}">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('public/login_assets/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(env('PUBLIC_URL'). 'login_assets/css/main.css')}}">
 <!--===============================================================================================-->
 <style>
     .wrap-login100 {
@@ -36,14 +36,14 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt>
-                   <a href="{{url('/')}}"> <img src="{{asset('public/login_assets/images/logo_login.jpg')}}" alt="IMG"></a>
+                <div class="login100-pic js-tilt" style="display: flex;align-items:center" data-tilt>
+                   <a href="{{url('/')}}"> <img src="{{asset(env('PUBLIC_URL').'website/assets/images/logo.png')}}" alt="IMG"></a>
                 </div>
 
                 <form class="account-form" id="sign_in" method="POST" action="{{route('login')}}">
                     @csrf
                     <span class="login100-form-title">
-                        Angvo Login
+                        UTAS Login
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: adam@gmail.com">
@@ -76,22 +76,6 @@
                             Login
                         </button>
                     </div>
-
-                    <div class="text-center p-t-12">
-                        <span class="txt1">
-                            Forgot
-                        </span>
-                        <a class="txt2" href="{{url('password/reset')}}">
-                            Password?
-                        </a>
-                    </div>
-
-                  <!--   <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
-                            Create your Account
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
-                    </div> -->
                 </form>
             </div>
         </div>
