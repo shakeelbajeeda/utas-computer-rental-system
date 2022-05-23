@@ -71,7 +71,10 @@ class ServiceController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $data['nav_active'] = 'services';
+        $data['title'] = "Edit Service";
+        $data['service'] = $product;
+        return view('supper_admin.services.add')->with($data);
     }
 
     /**
@@ -82,7 +85,10 @@ class ServiceController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $data['nav_active'] = 'services';
+        $data['title'] = "Edit Service";
+        $data['service'] = $product;
+        return view('supper_admin.services.add')->with($data);
     }
 
     /**

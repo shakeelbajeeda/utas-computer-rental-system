@@ -153,7 +153,7 @@
                                             <div class="avatar-preview">
                                                 @if(isset($service->image))
                                                     <div id="imagePreview1">
-                                                        <img id="imageEditPreview1" style="height: 69px;width: 69px;border-radius: 100%;" src="{{asset('/public/images/user_images')}}/{{ $user->image}}">
+                                                        <img id="imageEditPreview1" style="height: 69px;width: 69px;border-radius: 100%;" src="{{asset('/public/images/user_images')}}/{{ $service->image}}">
                                                     </div>
                                                 @else
                                                     <div id="imagePreview1" style="background-image: url({{asset('assets/img/default.png')}});">
