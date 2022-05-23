@@ -76,9 +76,13 @@ if(auth()->user()->is_student == 1) {
                                             </label>
                                         </div>
                                     </li>
-                                    <li class="list-group-item"><b class="pr-5">{{$discount_title}}:  </b id="discount_amount">${{$discount_amount}}</li>
+                                    <li class="list-group-item">
+                                        <b class="pr-5">{{$discount_title}}:  </b> $<span id="discount_amount">{{$discount_amount}}</span>
+                                        <br>
+                                        <span>Note: 10% discount will be given to only students</span>
+                                    </li>
 
-                                    <li class="list-group-item"><b class="pr-5">Order Total Amount: </b> $<span id="total_amount"></span></li>
+                                    <li class="list-group-item"><b class="pr-5">Order Total Amount: </b> $<span id="total_amount">0.00</span></li>
                                 </ul>
 
                                 <div class="text-center mt-4">
@@ -100,6 +104,8 @@ if(auth()->user()->is_student == 1) {
 
 @section('footer_scripts')
 <script>
+var per_hour_rate = '{{$service->per_hour_rate}}';
+
     function calulcate_order() {
         let hours = parseFloat($('#hours').val());
         let discount = 0;
@@ -111,14 +117,14 @@ if(auth()->user()->is_student == 1) {
         if(discount_percentage > 0) {
             discount =  hours * per_hour_rate * discount_percentage / 100
         }
+        console.log(discount);
         $('#discount_amount').text(discount);
         let security = parseFloat('{{$service->security_deposit}}');
-        let per_hour_rate = '{{$service->per_hour_rate}}';
         let total = (hours * per_hour_rate) + security + insurance_amount - discount;
         $('#total_amount').text(total);
-        console.log(total)
 
     }
-    console.log(calulcate_order());
+
+    calulcate_order();
 </script>
 @endsection

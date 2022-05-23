@@ -42,6 +42,21 @@ class CheckoutController extends Controller
             session()->flash('message', "You account don't have enough balance to process this order. Please recharge it first");
             return redirect()->back();
         }
-        dd($total_amount);
+
+        User::where('id', $user->id)->decrement('total_money', $total_amount);
+        $product->update(['is_rented' => 1]);
+        $data['user_id']= $user->id;
+        $data['product_id']= $product->id;
+        $data['total_price'] = $total_amount;
+        $data['per_hour_rate'] = $product->per_hour_rate;
+        $data['booking_date'] = date('Y-m-d H:i:s');
+        $data['is_insurance'] = $insurance > 0 ? 1 : 0;
+        $data['insurance_amount'] = $insurance;
+        $data['security'] = $product->security_deposit;
+        $data['discount'] = $discount;
+        $data['status'] = 'Paid';
+        Rented_device::create($data);
+        session()->flash('message', "Congrats, Your order has been completed successfully!. Please collect the device from relevent person. Thanks");
+        return redirect()->back();
     }
 }
