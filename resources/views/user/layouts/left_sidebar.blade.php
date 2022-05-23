@@ -10,6 +10,9 @@
         <li>
             <a href="{{route('my_recharge_history')}}"><i class="la la-list"></i><span>My Recharge History</span></a>
         </li>
+        <li>
+            <a href="{{route('my_recharge_history')}}"><i class="la la-list"></i><span>My Rented Devices</span></a>
+        </li>
         <li class=""><a href="{{route('logout')}}"><i class='la la-unlock'></i><span>Logout</span></a></li>
     </ul>
     <!-- End Main Navigation -->

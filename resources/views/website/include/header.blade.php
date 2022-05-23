@@ -253,8 +253,8 @@
                                       <li class="nav-item">
                                           @if (auth()->check())
                                               <a class="nav-link"
-                                                  href="@if (auth()->user()->is_admin == 1) {{ route('supper_admin_dashboard') }}
-                            
+                                                  href="@if (auth()->user()->role == 'Customer') {{ route('user_dashboard') }}
+
                                             @else
                                             {{ route('dashboard') }} @endif">Dashboard</a>
                                           @else

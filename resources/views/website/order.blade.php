@@ -62,9 +62,13 @@ if(auth()->user()->is_student == 1) {
                                     <li class="list-group-item"><b class="pr-5">Select Hours: </b>
                                         <select name="hours" onchange="calulcate_order();" id="hours" class="form-control" aria-label="Default select example">
                                             <option value="1">1 Hour</option>
+                                            <option value="1.5">1.5 Hours</option>
                                             <option value="2">2 Hours</option>
+                                            <option value="2.5">2.5 Hours</option>
                                             <option value="3">3 Hours</option>
+                                            <option value="3.5">3.5 Hours</option>
                                             <option value="4">4 Hours</option>
+                                            <option value="4.5">4.5 Hours</option>
                                             <option value="5">5 Hours</option>
                                         </select>
                                     </li>
