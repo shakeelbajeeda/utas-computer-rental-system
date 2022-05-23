@@ -29,14 +29,18 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section-title text-center">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search Rental Services">
-                            <div class="input-group-append">
-                                <button class="btn btn-secondary" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                        <form action="">
+                            <div class="input-group mb-3">
+                                
+                                <input type="text" class="form-control" value="{{@request()->get('search')}}" name="search" placeholder="Search Rental Services">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+
                         <h2 class="title" style="color: white;">View All Services</h2>
                     </div>
                 </div>
