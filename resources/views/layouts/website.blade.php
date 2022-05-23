@@ -18,7 +18,8 @@
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{asset('website/assets/css/bootstrap.min.css')}}">
     <!--====== Notification css ======-->
-    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/css/toastr.min.css') }}" rel="stylesheet">
+
     <style>
         .toast {
     opacity:1!important;
@@ -93,7 +94,8 @@
 
 
 <!--Scroll to top-->
-<script src="{{ asset('public/assets/js/toastr.min.js')}}"></script>
+<script src="{{ asset('public/assets/js/toastr.min.js') }}"></script>
+
 <script type="text/javascript">
     toastr.options = {
         "closeButton": true,
@@ -113,20 +115,7 @@
         // "hideMethod": "fadeOut"
     }
 
-    @if($errors->any())
-    @php
-        $html  = "<ul>";
-
-        foreach ($errors->all() as $error) {
-            $html .= "<li> $error </li>";
-        }
-            $html .= "</ul>";
-    @endphp
-    // toastr.error("{!! $html !!}", 'Error');
-
-    @endif
-
-     @if(Session::has('message'))
+    @if(Session::has('message'))
     var type = "{{Session::get('alert-type','Notification')}}"
 
 
@@ -147,6 +136,17 @@
             toastr.error("{{ Session::get('message') }}", 'Error');
             break;
     }
+    @endif
+    @if($errors->any())
+    @php
+        $html  = "<ul>";
+
+        foreach ($errors->all() as $error) {
+            $html .= "<li> $error </li>";
+        }
+            $html .= "</ul>";
+    @endphp
+    toastr.error("{!! $html !!}", 'Error');
     @endif
 </script>
 @yield('footer_scripts')
@@ -182,7 +182,7 @@ return err;
 
 }
 
- 
+
 </script>
 </body>
 </html>

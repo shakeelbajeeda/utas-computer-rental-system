@@ -62,9 +62,12 @@
                                         <p class="card-text">${{ $product->per_hour_rate }} Per/Hour</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                        <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
-                                    </div>
+                                        <a href="{{ route('checkout_page', [$product->id]) }}"
+                                            class="card-link btn btn-primary">Rent it</a>
+                                        <a href="{{ route('single', [$product->id]) }}"
+                                            class="card-link btn btn-primary float-end">View
+                                            Detail</a>
+                            </div>
                                 </div>
                             </div>
                         @endforeach

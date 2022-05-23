@@ -27,6 +27,7 @@ class User extends Authenticatable
         'is_active',
         'total_money',
         'password',
+        'is_student',
     ];
 
     /**
