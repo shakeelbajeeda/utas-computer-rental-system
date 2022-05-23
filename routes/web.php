@@ -38,6 +38,10 @@ Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_sta
 Route::get('view-all-managers', 'backend\UserController@web_managers')->name('web_managers');
 
 
+Route::get('/checkout', 'HomeController@checkout')->name('checkout_page');
+
+Route::get('/{slug}', 'HomeController@single')->name('single');
+
 
 
 

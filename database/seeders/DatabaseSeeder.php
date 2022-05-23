@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'waheed',
             'email'=> 'waheed@gmail.com',
             'password' => \Hash::make('123456789'),
-            'role'=> 'admin',
+            'role'=> 'Web Manager',
             'total_money' => 45,
             'phone' => '786765676',
             'address' => 'lahore',
