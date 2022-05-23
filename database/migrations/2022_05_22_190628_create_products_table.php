@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('display_size')->nullable();
             $table->integer('no_of_usb_ports')->nullable();
             $table->integer('no_of_hdmi_ports')->nullable();
+            $table->string('ram')->nullable();
             $table->string('image');
             $table->string('category');
             $table->bigInteger('user_id');

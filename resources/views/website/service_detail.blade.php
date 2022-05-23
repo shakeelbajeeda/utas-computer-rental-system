@@ -40,6 +40,7 @@
                                 <li class="list-group-item"><b class="pr-5">Rate Per/Hour: </b> ${{$service->per_hour_rate}}</li>
                                 <li class="list-group-item"><b class="pr-5">Operating System </b>{{$service->os}}</li>
                                 <li class="list-group-item"><b class="pr-5">Display Size: </b>{{$service->display_size}}</li>
+                                <li class="list-group-item"><b class="pr-5">Ram: </b>{{$service->ram}}</li>
                                 <li class="list-group-item"><b class="pr-5">Number of USB Ports: </b>{{$service->no_of_usb_ports}}</li>
                                 <li class="list-group-item"><b class="pr-5">Number of HDMI Ports: </b>{{$service->no_of_hdmi_ports}}</li>
                                 <li class="list-group-item"><b class="pr-5">Category: </b>{{$service->category}}</li>
