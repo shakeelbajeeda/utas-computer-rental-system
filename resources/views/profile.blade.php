@@ -1,281 +1,264 @@
 @extends('layouts.'.$layout)
 {{-- page level styles --}}
 @section('header_styles')
-    <!-- Add Page Styles here -->
-    <style>
-        /*! CSS Used from: https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css */
-        /*div,label{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}*/
-        /*! CSS Used from: Embedded */
-        .avatar-upload {
-            position:  relative;
-            max-width: 205px;
-            margin:    0 auto;
-        }
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+</style>
+<style>
+                 /* Always set the map height explicitly to define the size of the div
+                  * element that contains the map. */
+                 #map {
+                   height: 100%;
+                 }
+                 /* Optional: Makes the sample page fill the window. */
+                 html, body {
+                   height: 100%;
+                   margin: 0;
+                   padding: 0;
+                 }
+                 #description {
+                   font-family: Roboto;
+                   font-size: 15px;
+                   font-weight: 300;
+                 }
 
-        .avatar-upload .avatar-edit {
-            position: absolute;
-            right:    0px;
-            z-index:  1;
-            top:      0px;
-        }
+                 #infowindow-content .title {
+                   font-weight: bold;
+                 }
 
-        .avatar-upload .avatar-edit input {
-            display: none;
-        }
+                 #infowindow-content {
+                   display: none;
+                 }
 
-        .avatar-upload .avatar-edit input + label {
-            display:       inline-block;
-            width:         20px;
-            height:        20px;
-            margin-bottom: 0;
-            border-radius: 100%;
-            background:    #FFFFFF;
-            border:        1px solid transparent;
-            box-shadow:    0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor:        pointer;
-            font-weight:   normal;
-            transition:    all 0.2s ease-in-out;
-        }
+                 #map #infowindow-content {
+                   display: inline;
+                 }
 
-        .avatar-upload .avatar-edit input + label:hover {
-            background:   #f1f1f1;
-            border-color: #d6d6d6;
-        }
+                 .pac-card {
+                   margin: 10px 10px 0 0;
+                   border-radius: 2px 0 0 2px;
+                   box-sizing: border-box;
+                   -moz-box-sizing: border-box;
+                   outline: none;
+                   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                   background-color: #fff;
+                   font-family: Roboto;
+                 }
+                 .display{
+                   display: none;
+                 }
 
-        .avatar-upload .avatar-edit input + label:after {
-            content:     "\f040";
-            font-family: 'FontAwesome';
-            color:       #757575;
-            position:    absolute;
-            top:         0px;
-            left:        0;
-            right:       0;
-            text-align:  center;
-            margin:      auto;
-        }
+                 #pac-container {
+                   padding-bottom: 12px;
+                   margin-right: 12px;
+                 }
 
-        .avatar-upload .avatar-preview {
-            width:         80px;
-            height:        80px;
-            position:      relative;
-            border-radius: 100%;
-            border:        6px solid #F8F8F8;
-            box-shadow:    0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-        }
+                 .pac-controls {
+                   display: inline-block;
+                   padding: 5px 11px;
+                 }
 
-        .avatar-upload .avatar-preview > div {
-            width:               100%;
-            height:              100%;
-            border-radius:       100%;
-            background-size:     cover;
-            background-repeat:   no-repeat;
-            background-position: center;
-        }
+                 .pac-controls label {
+                   font-family: Roboto;
+                   font-size: 13px;
+                   font-weight: 300;
+                 }
 
-        /*! CSS Used fontfaces */
-        @font-face {
-            font-family: 'FontAwesome';
-            src:         url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0');
-            src:         url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot#iefix&v=4.7.0') format('embedded-opentype'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-            font-weight: normal;
-            font-style:  normal;
-        }
-    </style>
+                 #pac-input {
+                   background-color: #fff;
+                   font-family: Roboto;
+                   font-size: 15px;
+                   font-weight: 300;
+                   margin-left: 12px;
+                   padding: 0 11px 0 13px;
+                   text-overflow: ellipsis;
+                   width: 400px;
+                 }
+                 .pac-container {
+                   z-index: 5051 !important;
+                        }
+
+                 #pac-input:focus {
+                   border-color: #4d90fe;
+                 }
+
+                 #title {
+                   color: #fff;
+                   background-color: #4d90fe;
+                   font-size: 25px;
+                   font-weight: 500;
+                   padding: 6px 12px;
+                 }
+                 #target {
+                   width: 345px;
+                 }
+               </style>
+<style>
+
+  .avatar-upload{position:relative;max-width:205px;margin:0 auto;}
+  .avatar-upload .avatar-edit{position:absolute;right:0px;z-index:1;top:0px;}
+  .avatar-upload .avatar-edit input{display:none;}
+  .avatar-upload .avatar-edit input + label{display:inline-block;width:20px;height:20px;margin-bottom:0;border-radius:100%;background:#FFFFFF;border:1px solid transparent;box-shadow:0px 2px 4px 0px rgba(0, 0, 0, 0.12);cursor:pointer;font-weight:normal;transition:all 0.2s ease-in-out;}
+  .avatar-upload .avatar-edit input + label:hover{background:#f1f1f1;border-color:#d6d6d6;}
+  .avatar-upload .avatar-edit input + label:after{content:"\f040";font-family:'FontAwesome';color:#757575;position:absolute;top:0px;left:0;right:0;text-align:center;margin:auto;}
+  .avatar-upload .avatar-preview{width:80px;height:80px;position:relative;border-radius:100%;border:6px solid #F8F8F8;box-shadow:0px 2px 4px 0px rgba(0, 0, 0, 0.1);}
+  .avatar-upload .avatar-preview > div{width:100%;height:100%;border-radius:100%;background-size:cover;background-repeat:no-repeat;background-position:center;}
+  /*! CSS Used fontfaces */
+  @font-face{font-family:'FontAwesome';src:url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0');src:url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot#iefix&v=4.7.0') format('embedded-opentype'),url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal;}
+</style>
 @stop
-<!--Start page content-->
 @section('content')
-<?php 
-$countries= \App\Country::all();
- ?>
+<?php
+$roles = ['Web Manager', 'UCR Staff', 'Customer'];
+$cities = ['Hobart', 'Launceston'];
 
-    <div class="container-fluid">
-        <!-- Begin Page Header-->
-        <div class="row">
-            <div class="page-header">
-                <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Profile</h2>
-                    <div>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="ti ti-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
-                        </ul>
-                    </div>
+    $route = route('update_profile');
+    $method = 'post';
+
+?>
+<div class="container-fluid">
+    <!-- Begin Page Header-->
+    <div class="row">
+        <div class="page-header">
+            <div class="d-flex align-items-center">
+                <h2 class="page-header-title">{{$title}}</h2>
+                <div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a><i class="ti ti-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#">User management</a></li>
+                        <li class="breadcrumb-item active">{{$title}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- End Page Header -->
-        <div class="row flex-row">
-
-            <div class="col-xl-12">
-                <div class="widget has-shadow">
-                    <div class="widget-header bordered no-actions d-flex align-items-center">
-                        <h4>Update Profile</h4>
-                    </div>
-                    <div class="widget-body">
-
-                        <form class="form-horizontal" action="" method="post" enctype='multipart/form-data'>
-                            <!-- Form::model($user, ['route' => 'save.profile', 'method' => 'post','files'=>true,'autocomplete'=>'off','novalidate','class' => 'needs-validation']) } -->
-
-                            @csrf
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Select Image</label>
-                                <div class="col-lg-5">
-                                    <div class="input-group">
-                                        <div class="avatar-upload">
-                                            <div class="avatar-edit">
-                                                <input type="file" img="1" class="form-control" onchange="changeAvatar(this)" name="image" id="imageUpload1" accept=".png, .jpg, .jpeg">
-                                                <label for="imageUpload1"></label>
-                                            </div>
-                                            <div class="avatar-preview">
-                                                @if(isset($user->image))
-                                                    <div id="imagePreview1">
-                                                        <img id="imageEditPreview1" style="height: 69px;width: 69px;border-radius: 100%;" src="{{asset('/public/images/user_images')}}/{{ $user->image}}">
-                                                    </div>
-                                                @else
-                                                    <div id="imagePreview1" style="background-image: url({{asset('assets/img/default.png')}});">
-
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @if ($layout=='food_court')
-
-                                <div class="form-group row d-flex align-items-center mb-5">
-                                    <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Logo Image</label>
-                                    <div class="col-lg-5">
-                                        <div class="input-group">
-                                            <div class="avatar-upload">
-                                                <div class="avatar-edit">
-                                                    <input type="file" img="2" class="form-control" onchange="changeAvatar(this)" name="logo" id="imageUpload2" accept=".png, .jpg, .jpeg">
-                                                    <label for="imageUpload2"></label>
-                                                </div>
-                                                <div class="avatar-preview">
-                                                    @if(isset($user->logo))
-                                                        <div id="imagePreview2" style="background-image: url('{{asset('/public/images/user_images')}}/{{ $user->image}}');">
-                                                            <img id="imageEditPreview2" style="height: 69px;width: 69px;border-radius: 100%;" src="{{asset('/public/images/user_images')}}/{{ $user->logo}}">
-                                                        </div>
-                                                    @else
-                                                        <div id="imagePreview2" style="background-image: url('{{asset('assets/img/default.png')}}');">
-
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row d-flex align-items-center mb-5">
-                                    <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Restaurant Name</label>
-                                    <div class="col-lg-6">
-                                        <input name="restaurant_name" type="text" class="form-control" value="{{$user->restaurant_name}}">
-                                    </div>
-                                </div>
-                            @endif
-
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">First Name</label>
-                                <div class="col-lg-6">
-                                    <input name="first_name" type="text" class="form-control" value="{{$user->first_name}}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Last Name</label>
-                                <div class="col-lg-6">
-                                    <input name="last_name" type="text" class="form-control" value="{{$user->last_name}}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Email</label>
-                                <div class="col-lg-6">
-                                    <input name="email" type="Email" class="form-control" value="{{$user->email}}" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Phone Number</label>
-                                <div class="col-lg-6">
-                                    <input name="phone" type="text" class="form-control" value="{{$user->phone}}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">City</label>
-                                <div class="col-lg-6">
-                                    <input name="city" type="text" class="form-control" value="{{$user->city}}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Address</label>
-                                <div class="col-lg-6">
-                                    <input name="address" type="text" class="form-control" value="{{$user->address}}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Select Country</label>
-                                <div class="col-lg-6">
-                                    @if(isset($countries) and sizeof($countries))
-                                     <select class=" form-control selectpicker show-menu-arrow" name="country_id"  data-live-search="true" required="">
-                                         @foreach($countries as $c)
-                                           <option value="{{$c->id}}" @if($c->id ==$user->country_id) selected @endif>{{$c->nicename}}</option>
-                                         @endforeach
-                                     </select>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="mb-5">
-                                <h4>Change Password (optional)</h4>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">New Password</label>
-                                <div class="col-lg-6">
-                                    <input name="password" type="password" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="form-group row d-flex align-items-center mb-5">
-                                <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Confirm Password</label>
-                                <div class="col-lg-6">
-                                    <input name="confirm_password" type="password" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="em-separator separator-dashed"></div>
-                            <div class="text-right">
-                                <button class="btn btn-gradient-01" type="submit">Save Changes</button>
-                                <!-- <button class="btn btn-shadow" type="reset">Cancel</button> -->
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Row -->
     </div>
+    <!-- End Page Header -->
+    <div class="row flex-row">
+        <div class="col-xl-12">
+            <!-- Form -->
+            <div class="widget has-shadow">
+                <div class="widget-header bordered no-actions d-flex align-items-center">
+                    <h4>{{$title}}</h4>
+                </div>
+                <div class="widget-body">
+
+                    <form class="needs-validation" novalidate=""   action="{{$route}}" autocomplete="off" method="post" role="form" enctype="multipart/form-data">
+                        @csrf
+                        {{ method_field($method) }}
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Select Role</label>
+                            <div class="col-lg-5">
+                            <select disabled name="role" class=" form-control selectpicker show-menu-arrow"  data-live-search="true">
+
+                            <?php if(isset($roles) and sizeof($roles)>0):?>
+                            <?php foreach($roles as $c):?>
+                                @if(isset($user) and $user->role == $c)
+                                      <option selected value="<?=$c?>"><?=$c?></option>
+                                @else
+                                     <option value="<?=$c?>"><?=$c?></option>
+                                @endif
+                            <?php endforeach;
+                            else: ?>
+                            <option value="">No Role Found</option>
+                            <?php endif ?>
+
+                            </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Full Name</label>
+                            <div class="col-lg-5">
+                                <input type="text" name='name' value="{{@$user->name}}" class="form-control" required>
+                                @if($errors->has('email'))
+                                      <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
+                                          {{$errors->first('name')}}
+                                      </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Phone</label>
+                            <div class="col-lg-5">
+                                <input type="text" name='phone' value="{{@$user->phone}}" class="form-control" required>
+                                @if($errors->has('email'))
+                                      <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
+                                          {{$errors->first('phone')}}
+                                      </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Email</label>
+                            <div class="col-lg-5">
+                                <input type="email" name='email' value="{{@$user->email}}" class="form-control" placeholder="Enter Email" required>
+                                @if($errors->has('email'))
+                                      <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
+                                          {{$errors->first('email')}}
+                                      </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Password</label>
+                            <div class="col-lg-5">
+                                <input type="password" name='password' class="form-control" @if(!isset($user)) required @endif>
+                                @if($errors->has('email'))
+                                      <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
+                                          {{$errors->first('password')}}
+                                      </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Select City</label>
+                            <div class="col-lg-5">
+                            <select name="city" class=" form-control selectpicker show-menu-arrow"  data-live-search="true">
+
+                            <?php if(isset($cities) and sizeof($cities)>0):?>
+                            <?php foreach($cities as $c):?>
+                                @if(isset($user) and $user->city == $c)
+                                      <option selected value="<?=$c?>"><?=$c?></option>
+                                @else
+                                     <option value="<?=$c?>"><?=$c?></option>
+                                @endif
+                            <?php endforeach;
+                            else: ?>
+                            <option value="">No City Found</option>
+                            <?php endif ?>
+
+                            </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group row d-flex align-items-center mb-5">
+                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Address</label>
+                            <div class="col-lg-5">
+                                <input type="text" value="{{@$user->address}}" name='address' class="form-control" required>
+                                @if($errors->has('address'))
+                                      <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
+                                          {{$errors->first('address')}}
+                                      </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button class="btn btn-gradient-01" type="submit">Save Changes</button>
+                            <!-- <button class="btn btn-shadow" type="reset">Reset</button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Form -->
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+
+
 
 
 @stop
-
 @section('footer_scripts')
-    <!-- page level scripts -->
-    <script>
-        function changeAvatar(input) {
-            console.log(input)
-            if (input.files && input.files[0]) {
-                let id = $(input).attr('img');
-                var reader = new FileReader();
-                // var img = $(input).attr('img');
-                // alert(img);
-                console.log(id)
-                reader.onload = function (e) {
-                    $('#imagePreview' + id).css('background-image', 'url(' + e.target.result + ')');
-                    $('#imagePreview' + id).hide();
-                    $('#imageEditPreview' + id).hide();
-                    $('#imagePreview' + id).fadeIn(650);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 @stop

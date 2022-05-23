@@ -114,9 +114,11 @@ $cities = ['Hobart', 'Launceston'];
 if($title == 'Edit User') {
     $route = route('users.update', [$user->id]);
      $btn = 'Update';
+     $method = 'put';
 } else {
-    $route = route('users.create');
-    $btn = 'Update';
+    $route = route('users.store');
+    $btn = 'Add';
+    $method = 'post';
 }
 ?>
 <div class="container-fluid">
@@ -145,8 +147,9 @@ if($title == 'Edit User') {
                 </div>
                 <div class="widget-body">
 
-                    <form class="needs-validation" novalidate=""   action="{{$route}}" autocomplete="off" method="put" role="form" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate=""   action="{{$route}}" autocomplete="off" method="post" role="form" enctype="multipart/form-data">
                         @csrf
+                        {{ method_field($method) }}
                         <div class="form-group row d-flex align-items-center mb-5">
                             <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Select Role</label>
                             <div class="col-lg-5">
@@ -236,7 +239,7 @@ if($title == 'Edit User') {
                         <div class="form-group row d-flex align-items-center mb-5">
                             <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Address</label>
                             <div class="col-lg-5">
-                                <input type="text" value="{{@$user->phone}}" name='address' class="form-control" required>
+                                <input type="text" value="{{@$user->address}}" name='address' class="form-control" required>
                                 @if($errors->has('address'))
                                       <span class="invalid-feedback" role="alert" style="color:red;position:absolute;display: block;">
                                           {{$errors->first('address')}}

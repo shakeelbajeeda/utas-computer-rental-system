@@ -10,27 +10,31 @@ Route::get('/logout', function(){
   return redirect('/login');
 })->name('logout');
 
-Route::get('/about-us', function(){
-  return view('website.about_us');
-})->name('about_us');
 
-// auth user routes
 
 Route::get('dashboard', 'backend\HomeController@index')->name('dashboard');
+Route::post('/change_status', 'backend\HomeController@change_status')->name('change_status');
 Route::get('home', 'backend\HomeController@index')->name('home');
 Route::get('supper_admin_dashboard', 'backend\HomeController@index')->name('supper_admin_dashboard');
+Route::post('/general_delete', 'backend\HomeController@general_delete')->name('general_delete');
 
 // new routes starts here
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home_page');
 Route::get('/services', 'HomeController@index')->name('services');
+Route::get('/edit-profile', 'ProfileController@edit_profile')->name('edit_profile');
+Route::post('/update-profile', 'ProfileController@update_profile')->name('update_profile');
+
 
 Route::resources([
 	'users' => UserController::class,
 ]);
 
-Route::post('/general_delete', 'front\HomeController@general_delete')->name('general_delete');
+Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_staff');
+Route::get('view-all-managers', 'backend\UserController@web_managers')->name('web_managers');
+
+
 
 
 
@@ -42,4 +46,3 @@ Route::post('/general_delete', 'front\HomeController@general_delete')->name('gen
 
 Route::get('profile', 'HomeController@profile')->name('supper_admin.profile');
 Route::post('profile', 'HomeController@updateProfile')->name('save.profile');
-Route::post('/change_status', 'front\HomeController@change_status')->name('change_status');

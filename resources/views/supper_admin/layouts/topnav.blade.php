@@ -125,7 +125,7 @@
                             alt="..." class="rounded-circle">
                     </li>
                     <li>
-                        <a href="{{route('supper_admin.profile')}}" class="dropdown-item">
+                        <a href="{{route('edit_profile')}}" class="dropdown-item">
                           Update  Profile
                         </a>
                     </li>

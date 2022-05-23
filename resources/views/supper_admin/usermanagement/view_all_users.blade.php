@@ -51,7 +51,7 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Users</h2>
+                    <h2 class="page-header-title">{{$title}} List</h2>
                     <div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('/dashboard')}}"><i class="ti ti-home"></i></a></li>
@@ -72,12 +72,12 @@
                         <ul class="nav nav-pills">
                             <li>
                                 <a href="#rental_properties" data-toggle="tab" class="active show">
-                                    <button type="button" class="btn btn-outline-success mr-1 mb-2 remove_active active" onclick="add_class_active(this);">Active Users ({{count($active_users)}})</button>
+                                    <button type="button" class="btn btn-outline-success mr-1 mb-2 remove_active active" onclick="add_class_active(this);">Active {{$title}} ({{count($active_users)}})</button>
                                 </a>
                             </li>
                             <li>
                                 <a href="#properties_for_sell" data-toggle="tab">
-                                    <button type="button" class="btn btn-outline-danger mr-1 mb-2 remove_active" onclick="add_class_active(this);">Blocked Users ({{count($blocked_users)}})</button>
+                                    <button type="button" class="btn btn-outline-danger mr-1 mb-2 remove_active" onclick="add_class_active(this);">Blocked {{$title}} ({{count($blocked_users)}})</button>
                                 </a>
                             </li>
                         </ul>
@@ -93,7 +93,7 @@
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th>Phone</th>
-                                            <th>Joined At</th>
+                                            <th>Account Balance</th>
                                             <th>status</th>
                                             <th>Action</th>
                                         </tr>
@@ -106,7 +106,7 @@
                                             <td class="td-actions"><?=$p->email?></td>
                                             <td>{{$p->role}}</td>
                                             <td>{{$p->phone}}</td>
-                                            <td>{{date('d-M-Y',strtotime($p->created_at))}}</td>
+                                            <td>{{$p->total_money}}</td>
                                             <td>
                                                 <?php if($p->is_active == 1):?>
                                                 <p class="badge badge-pill badge-success" style="vertical-align: middle;font-size: 15px;font-weight: 500;cursor: pointer;" id="{{$p->id}}" table="users" tbl_field="is_active" status="0" operation="Block" onclick="change_status(this);">Activated</p>
@@ -128,11 +128,11 @@
                                     <table id="" class="export-table table table-bordered mb-0">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>Name</th>
+                                           <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
-                                            <th>Country</th>
-                                            <th>Created At</th>
+                                            <th>Phone</th>
+                                            <th>Account Balance</th>
                                             <th>status</th>
                                             <th>Action</th>
                                         </tr>
@@ -140,59 +140,20 @@
                                         <tbody>
                                         <?php if(isset($blocked_users) and sizeof($blocked_users) > 0):?>
                                         <?php foreach ($blocked_users as $key => $p):?>
-                                        <tr>
-                                            <td><?=$p->first_name?> <?=$p->last_name?></td>
+                                            <tr>
+                                            <td><?=$p->name?></td>
                                             <td class="td-actions"><?=$p->email?></td>
-                                            <td>{{$p->is_admin ? "Admin": 'Customer'}}</td>
-                                            <td>{{@$p->country->nicename}}</td>
-                                            <td>{{date('y-M-d',strtotime($p->created_at))}}</td>
+                                            <td>{{$p->role}}</td>
+                                            <td>{{$p->phone}}</td>
+                                            <td>{{$p->total_money}}</td>
                                             <td>
                                                 <?php if($p->is_active == 0):?>
                                                 <p class="badge badge-pill badge-danger" style="vertical-align: middle;font-size: 15px;font-weight: 500;cursor: pointer;" id="{{$p->id}}" table="users" tbl_field="is_active" operation="Activate" status="1" onclick="change_status(this);">Blocked</p>
                                                 <?php endif ?>
                                             </td>
-                                          <td class="td-actions">
-                                            <a href="{{route('user_detial')}}/{{$p->id}}"><i class="la la-eye edit" title="View User Detail"></i></a>
-                                            <a href="{{route('users.edit',[$p->id])}}"><i class="la la-edit delete" title="Edit User"></i></a>
-                                                <a href="javascript:void(0);" id="{{$p->id}}" onclick="delete_item(this);"><i class="la la-close delete" title="Delete User"></i></a></td>
-                                        </tr>
-                                        <?php endforeach ?>
-                                        <?php endif ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="under_review">
-                                <div class="table-responsive">
-                                    <table id="" class="export-table table table-bordered mb-0">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Country</th>
-                                            <th>Created At</th>
-                                            <th>status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php if(isset($under_review_users) and sizeof($under_review_users) > 0):?>
-                                        <?php foreach ($under_review_users as $key => $p):?>
-                                        <tr>
-                                            <td><?=$p->first_name?> <?=$p->last_name?></td>
-                                            <td class="td-actions"><?=$p->email?></td>
-                                            <td>{{$p->is_admin ? "Admin": 'Customer'}}</td>
-                                            <td>{{@$p->country->nicename}}</td>
-                                            <td>{{date('y-M-d',strtotime($p->created_at))}}</td>
-                                            <td>
-                                                <?php if($p->is_active == 0):?>
-                                                <p class="badge badge-pill badge-danger" style="vertical-align: middle;font-size: 15px;font-weight: 500;cursor: pointer;" id="{{$p->id}}" table="users" tbl_field="is_active" operation="Activate" status="1" onclick="change_status(this);">Blocked</p>
-                                                <?php endif ?>
-                                            </td>
-                                          <td class="td-actions">
-                                            <a href="{{route('user_detial')}}/{{$p->id}}"><i class="la la-eye edit" title="View User Detail"></i></a>
-                                            <a href="{{route('users.edit',[$p->id])}}"><i class="la la-edit delete" title="Edit User"></i></a>
+                                            <td class="td-actions">
+                                                <a href="{{route('users.show',[$p->id])}}"><i class="la la-eye edit" title="View User Detail"></i></a>
+                                                <a href="{{route('users.edit',[$p->id])}}"><i class="la la-edit delete" title="Edit User"></i></a>
                                                 <a href="javascript:void(0);" id="{{$p->id}}" onclick="delete_item(this);"><i class="la la-close delete" title="Delete User"></i></a></td>
                                         </tr>
                                         <?php endforeach ?>
