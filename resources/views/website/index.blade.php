@@ -38,6 +38,11 @@
                     src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/slider_images/slider_2.jpg') }}"
                     alt="Second slide">
             </div>
+            <div class="carousel-item">
+                <img class="d-block w-100"
+                    src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/slider_images/slider_3.jpg') }}"
+                    alt="Second slide">
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
