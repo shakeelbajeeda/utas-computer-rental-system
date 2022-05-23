@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recharge_history;
 use App\Models\Product;
+use App\Models\Rented_device;
 use App\Models\User;
 class HomeController extends Controller
 {
@@ -22,5 +23,11 @@ class HomeController extends Controller
         $data['nav_active'] = 'account';
         $data['recharges'] = Recharge_history::where('added_to', auth()->user()->id)->get();
         return view('user.accounts.index')->with($data);
+    }
+
+    public function my_rented_devices() {
+        $data['nav_active'] = 'account';
+        $data['devices'] = Rented_device::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        return view('user.devices.index')->with($data);
     }
 }

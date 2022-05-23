@@ -28,6 +28,7 @@ class CreateRentedDevicesTable extends Migration
             $table->decimal('security', 8, 2)->default(0);
             $table->decimal('discount', 8, 2)->default(0);
             $table->decimal('damage_amount', 8, 2)->default(0);
+            $table->decimal('total_hours', 8, 2)->default(0);
             $table->decimal('late_fee', 8, 2)->default(0);
             $table->text('note')->nullable();
             $table->timestamps();

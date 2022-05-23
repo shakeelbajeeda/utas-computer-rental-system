@@ -49,6 +49,7 @@ class CheckoutController extends Controller
         $data['product_id']= $product->id;
         $data['total_price'] = $total_amount;
         $data['per_hour_rate'] = $product->per_hour_rate;
+        $data['total_hours'] = $request->hours;
         $data['booking_date'] = date('Y-m-d H:i:s');
         $data['is_insurance'] = $insurance > 0 ? 1 : 0;
         $data['insurance_amount'] = $insurance;

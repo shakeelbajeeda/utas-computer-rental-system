@@ -34,6 +34,8 @@ Route::resources([
 	'products' => ServiceController::class,
 	'recharges' => AccountController::class,
 ]);
+
+Route::get('all-rental-services', 'backend\ServiceController@all_rental_services')->name('all_rental_services');
 Route::post('update_service/{id}', 'backend\ServiceController@update')->name('update_service');
 Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_staff');
 Route::get('view-all-managers', 'backend\UserController@web_managers')->name('web_managers');
@@ -43,15 +45,10 @@ Route::get('user/dashboard', 'user\HomeController@index')->name('user_dashboard'
 Route::get('user/my-recharge-history', 'user\HomeController@my_recharge_history')->name('my_recharge_history');
 Route::get('/checkout/{id?}', 'HomeController@checkout')->name('checkout_page')->middleware('auth');
 Route::post('/confirm-order', 'CheckoutController@confirm_order')->name('confirm_order')->middleware('auth');
+Route::get('user/my-rented-devices', 'user\HomeController@my_rented_devices')->name('my_rented_devices');
 
 
 Route::get('/service-detail/{id?}', 'HomeController@single')->name('single');
-
-
-
-
-
-
 
 
 

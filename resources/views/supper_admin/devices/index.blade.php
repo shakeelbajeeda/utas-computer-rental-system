@@ -51,11 +51,11 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Services</h2>
+                    <h2 class="page-header-title">Recharge History</h2>
                     <div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('supper_admin_dashboard')}}"><i class="ti ti-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">All Services</a></li>
+                            <li class="breadcrumb-item"><a href="#">Recharge History</a></li>
                             <!-- <li class="breadcrumb-item active">Pending</li> -->
                         </ul>
                     </div>
@@ -75,35 +75,31 @@
                                     <table id="" class="export-table table table-bordered mb-0">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>Category</th>
-                                            <th>Title</th>
-                                            <th>Brand</th>
-                                            <th>Per Hour Rent</th>
+                                            <th>User</th>
+                                            <th>Product</th>
+                                            <th>Total Hours</th>
+                                            <th>Security</th>
+                                            <th>Total Amount</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Is Returned</th>
+                                            <th>Rent Date</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if(isset($services) and sizeof($services) > 0):?>
-                                        <?php foreach ($services as $key => $p):?>
+                                        <?php if(isset($devices) and sizeof($devices) > 0):?>
+                                        <?php foreach ($devices as $key => $p):?>
                                         <tr>
-                                            <td>{{$p->category}}</td>
-                                            <td>{{$p->title}}</td>
-                                            <td>{{$p->brand}}</td>
-                                            <td>${{$p->per_hour_rate}}</td>
-                                            <td>
-                                                @if($p->is_rented == 1)
-                                                <span class="badge badge-danger p-1">Rented</span>
-                                                @else
-                                                <span class="badge badge-primary p-1">Available</span>
-                                                @endif
-                                            </td>
+                                            <td>{{@$p->user->name}}</td>
+                                            <td>{{@$p->product->title}}</td>
+                                            <td>${{$p->total_hours}}</td>
+                                            <td>{{@$p->security}}</td>
+                                            <td>{{@$p->total_price}}</td>
+                                            <td>{{@$p->status}}</td>
+                                            <td>{{@$p->is_returned == 1 ? 'Yes' : 'No'}}</td>
 
-                                            <td class="td-actions">
-                                                <a href="{{route('single',[$p->id])}}"><i class="la la-eye edit" title="View User Detail"></i></a>
-                                                <a href="{{route('products.edit',[$p->id])}}"><i class="la la-edit delete" title="Edit User"></i></a>
-                                                <a href="javascript:void(0);" id="{{$p->id}}" onclick="delete_item(this);"><i class="la la-close delete" title="Delete Product"></i></a>
-                                            </td>
+
+                                            <td>{{date('d-M-Y', strtotime($p->booking_date))}}</td>
+
                                         </tr>
                                         <?php endforeach ?>
                                         <?php endif ?>

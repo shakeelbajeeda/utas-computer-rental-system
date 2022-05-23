@@ -8,6 +8,17 @@
             <a href="{{route('edit_profile')}}"><i class="la la-columns"></i><span>Update Profile</span></a>
         </li>
         <li class="">
+            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented Request</span></a>
+        </li>
+        <li class="">
+            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented Return Request</span></a>
+        </li>
+        <li class="">
+            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented List</span></a>
+        </li>
+        <li class="">
+        </li>
+        <li class="">
             <a href="#dropdown-account" aria-expanded="@if($nav_active=='account') true @else false @endif" data-toggle="collapse"><i class="la la-user"></i><span>Manage Accounts</span></a>
             <ul id="dropdown-account" class="collapse @if($nav_active=='account') show @endif list-unstyled pt-0">
                 <li>

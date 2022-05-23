@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use App\Models\Rented_device;
 class ServiceController extends Controller
 {
     public function __construct()
@@ -131,5 +131,12 @@ class ServiceController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+
+    public function all_rental_services() {
+        $data['nav_active'] = 'account';
+        $data['devices'] = Rented_device::orderBy('id', 'desc')->get();
+        return view('supper_admin.devices.index')->with($data);
     }
 }
