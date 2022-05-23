@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('address');
             $table->tinyInteger('is_active')->default(1);
+            $table->tinyInteger('is_student')->default(0);
             $table->timestamps();
         });
     }
