@@ -44,83 +44,26 @@
             <div class="row no-gutters justify-content-center">
                 <div class="col-lg-12">
                     <div class="row justify-content-center">
-                        <div class="col-md-3 mb-5">
-                            <div class="card ">
-                                <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Mac Book Pro</h5>
-                                    <p class="card-text">$10 Per/hour</p>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                    <a href="{{ route('home_page') }}" class="card-link btn btn-primary float-end">View
-                                        Detail</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-5">
-                            <div class="card ">
-                                <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Mac Book Pro</h5>
-                                    <p class="card-text">$10 Per/hour</p>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                    <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
-
+                        @foreach ($services as $product)
+                            <div class="col-md-3 mb-5">
+                                <div class="card">
+                                    @if ($product->is_rented == 1)
+                                        <span class="rent_out">Reserved</span>
+                                    @endif
+                                    <img height="230px"
+                                        src="{{ asset(env('PUBLIC_URL') . 'public/images/service_images/') }}/{{ $product->image }}"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{ $product->title }}</h5>
+                                        <p class="card-text">${{ $product->per_hour_rate }} Per/Hour</p>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <a href="#" class="card-link btn btn-primary">Rent it</a>
+                                        <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 mb-5">
-                            <div class="card ">
-                                <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Mac Book Pro</h5>
-                                    <p class="card-text">$10 Per/hour</p>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                    <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-5">
-                            <div class="card ">
-                                <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Mac Book Pro</h5>
-                                    <p class="card-text">$10 Per/hour</p>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                    <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-5">
-                            <div class="card ">
-                                <img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/services_images/laptop.jpg') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Mac Book Pro</h5>
-                                    <p class="card-text">$10 Per/hour</p>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link btn btn-primary">Rent it</a>
-                                    <a href="#" class="card-link btn btn-primary float-end">View Detail</a>
-
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>

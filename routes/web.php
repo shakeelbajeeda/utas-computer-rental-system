@@ -39,15 +39,12 @@ Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_sta
 Route::get('view-all-managers', 'backend\UserController@web_managers')->name('web_managers');
 
 
-
 Route::get('user/dashboard', 'user\HomeController@index')->name('user_dashboard');
 Route::get('user/my-recharge-history', 'user\HomeController@my_recharge_history')->name('my_recharge_history');
+Route::get('/checkout/{id?}', 'HomeController@checkout')->name('checkout_page');
 
 
-
-Route::get('/checkout', 'HomeController@checkout')->name('checkout_page');
-
-Route::get('/{slug}', 'HomeController@single')->name('single');
+Route::get('/service-detail/{id?}', 'HomeController@single')->name('single');
 
 
 
