@@ -18,10 +18,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('brand');
             $table->decimal('per_hour_rate', 8, 2);
-            $table->string('os');
-            $table->string('display_size');
-            $table->integer('no_of_usb_ports');
-            $table->integer('no_of_hdmi_ports');
+            $table->string('os')->nullable();
+            $table->string('display_size')->nullable();
+            $table->integer('no_of_usb_ports')->nullable();
+            $table->integer('no_of_hdmi_ports')->nullable();
             $table->string('image');
             $table->string('category');
             $table->bigInteger('user_id');

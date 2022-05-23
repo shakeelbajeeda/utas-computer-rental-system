@@ -25,6 +25,18 @@
                 </li>
             </ul>
         </li>
+
+        <li class="">
+            <a href="#dropdown-users" aria-expanded="@if($nav_active=='users') true @else false @endif" data-toggle="collapse"><i class="la la-home"></i><span>Services</span></a>
+            <ul id="dropdown-users" class="collapse @if($nav_active=='users') show @endif list-unstyled pt-0">
+                <li>
+                    <a href="{{route('users.create')}}"><i class="la la-plus"></i><span>Add New User</span></a>
+                </li>
+                <li>
+                    <a href="{{route('users.index')}}"><i class="la la-list"></i><span>Customers List</span></a>
+                </li>
+            </ul>
+        </li>
         <li class=""><a href="{{route('logout')}}"><i class='la la-unlock'></i><span>Logout</span></a></li>
     </ul>
     <!-- End Main Navigation -->
