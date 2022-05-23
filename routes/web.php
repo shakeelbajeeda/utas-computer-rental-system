@@ -2,6 +2,7 @@
 
 use backend\ServiceController;
 use backend\UserController;
+use backend\AccountController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,11 +32,17 @@ Route::post('/update-profile', 'ProfileController@update_profile')->name('update
 Route::resources([
 	'users' => UserController::class,
 	'products' => ServiceController::class,
-
+	'recharges' => AccountController::class,
 ]);
-
+Route::post('update_service/{id}', 'backend\ServiceController@update')->name('update_service');
 Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_staff');
 Route::get('view-all-managers', 'backend\UserController@web_managers')->name('web_managers');
+
+
+
+Route::get('user/dashboard', 'user\HomeController@index')->name('user_dashboard');
+Route::get('user/my-recharge-history', 'user\HomeController@my_recharge_history')->name('my_recharge_history');
+
 
 
 Route::get('/checkout', 'HomeController@checkout')->name('checkout_page');

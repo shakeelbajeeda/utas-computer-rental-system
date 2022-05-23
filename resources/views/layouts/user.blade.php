@@ -5,7 +5,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ENV('APP_NAME')}}</title>
-    <meta name="description" content=" Dashboard">
+    <meta name="description" content=" User Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Google Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
@@ -18,20 +18,20 @@
         });
     </script>
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{asset('public/angvo/assets/images/favicon.png')}}" type="image/png">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/css/bootstrap-select/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/vendors/css/base/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/vendors/css/base/elisyam-1.5.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/vendors/css/base/ezumo-1.5.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/css/owl-carousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/public/assets/css/owl-carousel/owl.theme.min.css') }}">
-    <link href="{{ asset('public/public/assets/css/toastr.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/public/css/zoomimage.css') }}"/>
+    <link rel="shortcut icon" href="{{asset('website/assets/images/favicon.png')}}" type="image/png">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap-select/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/base/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/base/elisyam-1.5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/base/ezumo-1.5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/owl-carousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/owl-carousel/owl.theme.min.css') }}">
+    <link href="{{ asset('public/assets/css/toastr.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/zoomimage.css') }}"/>
     <!-- CSRF Token -->
     @yield('header_styles')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="{{ asset('public/public/assets/css/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/datatables/datatables.min.css') }}">
     <!--[if lt IE 9]> -->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -61,11 +61,25 @@
         }
         .close span {float: right;}
         .toast-close-button{display: none!important;}
+        *[class*="icon-"] {
+    transform: 0!important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
     </style>
 </head>
 <body id="page-top">
-        <style type="text/css">
-     
+    <style type="text/css">
+
     #please_wait {
         position: fixed;
         left: 0px;
@@ -90,7 +104,7 @@
 <!-- Begin Preloader -->
 <div id="preloader">
     <div class="canvas">
-        <img src="{{ asset('public/public/assets/img/logo.png') }}" alt="logo" class="loader-logo">
+        <img style="width: 225px;" src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" class="loader-logo">
         <div class="spinner"></div>
     </div>
 </div>
@@ -113,15 +127,15 @@
             <footer class="main-footer">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-start justify-content-lg-start justify-content-md-start justify-content-center">
-                        <p class="text-gradient-02">Developed By Future Tech Soul Team</p>
+                        <p class="text-gradient-02"></p>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-end justify-content-center">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="mailto:info@futuretechsoul.com">Mail:info@futuretechsoul.com</a>
+                                <a class="nav-link" href=""></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Copyright © <strong><?php echo date('Y');  ?></strong>Future Tech Soul</a>
+                                <a class="nav-link" href="#">Copyright © <strong><?php echo date('Y');  ?></strong></a>
                             </li>
                         </ul>
                     </div>
@@ -136,87 +150,42 @@
     <!-- End Page Content -->
 </div>
 <!-- Begin Success Modal -->
-<div id="delay-modal" class="modal fade">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div class="sa-icon sa-success animate" style="display: block;">
-                    <span class="sa-line sa-tip animateSuccessTip"></span>
-                    <span class="sa-line sa-long animateSuccessLong"></span>
-                    <div class="sa-placeholder"></div>
-                    <div class="sa-fix"></div>
-                </div>
-                <div class="section-title mt-5 mb-5">
-                    <h2 class="text-dark">Meeting successfully created</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- End Success Modal -->
-<!-- Begin Modal -->
-<div id="modal-view-event" class="modal modal-top fade calendar-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title event-title"></h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">close</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="media">
-                    <div class="media-left align-self-center mr-3">
-                        <div class="event-icon"></div>
-                    </div>
-                    <div class="media-body align-self-center mt-3 mb-3">
-                        <div class="event-body"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- End Modal -->
 <!-- sweet alerts plug in ...swal -->
-<script src="{{ asset('public/public/assets/js/dashboard/jquerySweetAlerts.js') }}"></script>
+<script src="{{ asset(env('PUBLIC_URL').'public/assets/js/dashboard/jquerySweetAlerts.js') }}"></script>
 <!-- Begin Vendor Js -->
-<script src="{{ asset('public/public/assets/vendors/js/base/jquery.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/base/core.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/bootstrap-select/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/base/jquery.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/base/core.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/bootstrap-select/bootstrap-select.min.js') }}"></script>
 
 <!-- End Vendor Js -->
 <!-- for data tables -->
-<!-- <script src="{{ asset('public/public/assets/vendors/js/datatables/datatables.min.js') }}"></script> -->
+<!-- <script src="{{ asset('public/assets/vendors/js/datatables/datatables.min.js') }}"></script> -->
 
 
 <!-- Begin Page Vendor Js -->
-<script src="{{ asset('public/public/assets/vendors/js/nicescroll/nicescroll.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/chart/chart.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/progress/circle-progress.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/calendar/moment.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/calendar/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/owl-carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/app/app.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/nicescroll/nicescroll.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/chart/chart.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/progress/circle-progress.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/calendar/moment.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/calendar/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/owl-carousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/app/app.js') }}"></script>
 
 
 <!-- End Page Vendor Js -->
 
 
 <!-- Begin Page Snippets -->
-<script src="{{ asset('public/public/assets/js/dashboard/db-default.js') }}"></script>
-<script src="{{ asset('public/public/assets/js/toastr.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/js/components/validation/validation.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/bootstrap-wizard/bootstrap.wizard.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/js/components/wizard/form-wizard.min.js') }}"></script>
-<script language="javascript" type="text/javascript" src="{{ asset('public/public/js/zoomimage.js') }}"></script>
-<script src="{{ asset('public/public/assets/vendors/js/tabledit/jquery.tabledit.min.js') }}"></script>
-<script src="{{ asset('public/public/assets/js/components/tabledit/tabledit.js') }}"></script>
+<script src="{{ asset('public/assets/js/dashboard/db-default.js') }}"></script>
+<script src="{{ asset('public/assets/js/toastr.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/components/validation/validation.min.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/bootstrap-wizard/bootstrap.wizard.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/components/wizard/form-wizard.min.js') }}"></script>
+<script language="javascript" type="text/javascript" src="{{ asset('public/js/zoomimage.js') }}"></script>
+<script src="{{ asset('public/assets/vendors/js/tabledit/jquery.tabledit.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/components/tabledit/tabledit.js') }}"></script>
 
 
 <!-- End Page Snippets -->
@@ -276,12 +245,12 @@
 
 
         @if(Session::has('message'))
-    var type = "{{Session::get('alert-type','info')}}"
+    var type = "{{Session::get('alert-type','Notification')}}"
 
 
     switch (type) {
-        case 'info':
-            toastr.info("{{ Session::get('message') }}", 'Info');
+        case 'Notification':
+            toastr.info("{{ Session::get('message') }}", 'Congrats');
             break;
         case 'success':
             toastr.success("{{ Session::get('message') }}", 'Success');
@@ -290,6 +259,9 @@
             toastr.warning("{{ Session::get('message') }}", 'Warning');
             break;
         case 'error':
+            toastr.error("{{ Session::get('message') }}", 'Error');
+            break;
+            default:
             toastr.error("{{ Session::get('message') }}", 'Error');
             break;
     }
@@ -376,14 +348,14 @@
             async: true,
             success: call_back,
             error: function (err) {
-                 block(); 
+                block();
                 return err;
             }
         });
     }
-        $(document).on({
+    $(document).on({
      ajaxStart: function() { block();   },
-     ajaxStop: function() { unBlock(); }    
+     ajaxStop: function() { unBlock(); }
 });
     function block() {
       $.blockUI({ message: $('#please_wait') });

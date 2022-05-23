@@ -7,6 +7,17 @@
         <li class="">
             <a href="{{route('edit_profile')}}"><i class="la la-columns"></i><span>Update Profile</span></a>
         </li>
+        <li class="">
+            <a href="#dropdown-account" aria-expanded="@if($nav_active=='account') true @else false @endif" data-toggle="collapse"><i class="la la-user"></i><span>Manage Accounts</span></a>
+            <ul id="dropdown-account" class="collapse @if($nav_active=='account') show @endif list-unstyled pt-0">
+                <li>
+                    <a href="{{route('recharges.create')}}"><i class="la la-plus"></i><span>Recharge an Account</span></a>
+                </li>
+                <li>
+                    <a href="{{route('recharges.index')}}"><i class="la la-list"></i><span>Recharge History</span></a>
+                </li>
+            </ul>
+        </li>
 
          <li class="">
             <a href="#dropdown-users" aria-expanded="@if($nav_active=='users') true @else false @endif" data-toggle="collapse"><i class="la la-user"></i><span>User Management</span></a>

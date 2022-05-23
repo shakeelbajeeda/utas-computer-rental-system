@@ -58,31 +58,14 @@
                             <div class="wrap-input100 validate-input"
                                 data-validate="Valid first name is required: Mehar">
                                 <input class="input100 @error('email') is-invalid @enderror" type="text"
-                                    name="first_name" placeholder="First Name" required autocomplete="off"
-                                    value="{{ old('first_name') }}">
+                                    name="name" placeholder="Name" required autocomplete="off"
+                                    value="{{ old('name') }}">
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fa fa-name" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            @error('first_name')
-                                <span style="display: block;" class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <div class="wrap-input100 validate-input"
-                                data-validate="Valid last name is required: Waheed">
-                                <input class="input100 @error('email') is-invalid @enderror" type="text"
-                                    name="last_name" placeholder="Last Name" required autocomplete="off"
-                                    value="{{ old('last_name') }}">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-name" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            @error('last_name')
+                            @error('name')
                                 <span style="display: block;" class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -161,7 +144,7 @@
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            @error('email')
+                            @error('city')
                                 <span style="display: block;" class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -176,7 +159,7 @@
                                     <i class="fa fa-address-card" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            @error('email')
+                            @error('address')
                                 <span style="display: block;" class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

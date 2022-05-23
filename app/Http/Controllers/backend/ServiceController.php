@@ -10,6 +10,7 @@ class ServiceController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
         $this->middleware('admin');
     }
     /**
@@ -60,7 +61,7 @@ class ServiceController extends Controller
         $data['image'] = $this->upload_file($request->image, 'service_images');
         Product::create($data);
         session()->flash('message', 'Service added successfully');
-        return redirect()->back();
+        return redirect(route('products.index'));
     }
 
     /**
@@ -100,7 +101,25 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+            'brand' => 'required',
+            'per_hour_rate' => 'required',
+            'security_deposit' => 'required',
+            'insurance_amount' => 'required',
+        ]);
+        $data = $request->except('image');
+        if($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image',
+            ]);
+            $this->remove_file($product->image, 'service_images');
+            $data['image'] = $this->upload_file($request->image, 'service_images');
+        }
+        $product->update($data);
+        session()->flash('message', 'Service updated successfully');
+        return redirect(route('products.index'));
     }
 
     /**

@@ -28,8 +28,8 @@ class Controller extends BaseController
 
      public function remove_file($filename,$folder)
     {
-        if (file_exists(public_path('images/'.$folder.'/' . $filename))) {
-                    unlink(public_path('images/'.$folder.'/' . $filename));
+        if (file_exists(public_path('public/images/'.$folder.'/' . $filename))) {
+                    unlink(public_path('public/images/'.$folder.'/' . $filename));
          }
     }
 }

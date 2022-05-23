@@ -1,4 +1,4 @@
-@extends('layouts/supper_admin')
+@extends('layouts/user')
 {{-- page level styles --}}
 @section('header_styles')
     <style type="text/css">/* Chart.js */
@@ -51,11 +51,11 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">View All Complaints</h2>
+                    <h2 class="page-header-title">Recharge History</h2>
                     <div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/dashboard')}}"><i class="ti ti-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">View All Complaints</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('supper_admin_dashboard')}}"><i class="ti ti-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Recharge History</a></li>
                             <!-- <li class="breadcrumb-item active">Pending</li> -->
                         </ul>
                     </div>
@@ -67,7 +67,7 @@
             <div class="col-xl-12">
                 <!-- Form -->
                 <div class="widget has-shadow">
-                   
+
                     <div class="widget-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="active_packages">
@@ -75,34 +75,26 @@
                                     <table id="" class="export-table table table-bordered mb-0">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>Customer Name</th>
-                                            <th>Service</th>
-                                            <th>Email</th>
-                                            <th>Contact Number</th>
-                                            <th>Image</th>
-                                            <th>Description</th>
-                                            <th>Created At</th>
+                                            <th>Recharge into</th>
+                                            <th>Amount</th>
+                                            <th>Recharge By</th>
+                                            <th>Date</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if(isset($compalints) and sizeof($compalints) > 0):?>
-                                        <?php foreach ($compalints as $key => $p):?>
+                                        <?php if(isset($recharges) and sizeof($recharges) > 0):?>
+                                        <?php foreach ($recharges as $key => $p):?>
                                         <tr>
-                                            <td>{{$p->name}}</td>
-                                            <td>{{$p->service->title}}</td>
-                                            <td>{{$p->email}}</td>
-                                            <td>{{$p->phone}}</td>
-                                            <td><a download href="{{asset('public/images/complaints')}}/{{$p->image}}">Download</a></td>
-                                            <td>{{$p->description}}</td>
-                                            <td>{{date('M-d-Y',strtotime($p->created_at))}}</td>
+                                            <td>{{@$p->receiver->name}}</td>
+                                            <td>${{$p->amount}}</td>
+                                            <td>{{@$p->sender->name}}</td>
+                                            <td>{{date('d-M-Y', strtotime($p->created_at))}}</td>
+
                                         </tr>
                                         <?php endforeach ?>
                                         <?php endif ?>
                                         </tbody>
                                     </table>
-                                    <center>
-                                        {{$compalints->links()}}
-                                    </center>
                                 </div>
                             </div>
 
@@ -131,7 +123,7 @@
             {
                 $('#active_packages').hide();
                 $('#expired_packages').show();
-                
+
             }
             $(e).addClass('active');
         }
@@ -139,13 +131,13 @@
         function delete_item(e) {
             var data =
                 {
-                    'table': 'users',
+                    'table': 'products',
                     'id': $(e).attr('id'),
                     '_token': '{{csrf_token()}}'
                 }
             swal({
                 title: "Are you sure?",
-                text: "Are you really want to remove this User?",
+                text: "Are you really want to remove this Service?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -159,7 +151,7 @@
                             swal({
                                 title: 'Congrats!',
                                 icon: "success",
-                                text: res.response,
+                                text: "Service has been deleted",
                                 type: 'confirm',
                                 confirmButtonClass: "btn btn-success",
                                 buttonsStyling: true

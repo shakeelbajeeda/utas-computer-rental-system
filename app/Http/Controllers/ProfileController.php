@@ -18,7 +18,7 @@ class ProfileController extends Controller
         $data['nav_active'] = 'profile';
         $data['title'] = "Edit Profile";
         $data['user'] = User::find(auth()->user()->id);
-        $data['layout'] = auth()->user()->role == "Customer" ? '/supper_admin' : '/supper_admin';
+        $data['layout'] = auth()->user()->role == "Customer" ? '/user' : '/supper_admin';
         // dd($data);
         return view('profile')->with($data);
     }
