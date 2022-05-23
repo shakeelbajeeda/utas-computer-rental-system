@@ -77,10 +77,10 @@ class UserController extends Controller
 
         $user = User::create($data);
         Session::flash('message', 'User created successfully!');
-        if($user->role == "Customer")
-        {
+        // if($user->role == "Customer")
+        // {
 
-        }
+        // }
         return redirect()->back();
     }
 

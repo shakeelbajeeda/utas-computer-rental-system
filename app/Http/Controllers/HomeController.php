@@ -48,20 +48,5 @@ class HomeController extends Controller
             abort(404, 'Page Not Found');
         }
     }
-    private function upload_file($img_file,$folder_name)
-    {
 
-       $imgpath = 'public/images/'.$folder_name;
-       File::makeDirectory($imgpath, $mode = 0777, true, true);
-       $imgDestinationPath = $imgpath.'/';
-       $file_name = time()."_".$img_file->getClientOriginalName();
-       $success = $img_file->move($imgDestinationPath, $file_name);
-       return($file_name);
-
-     }
-
-     public function test_uk_physial_address()
-     {
-        $this->generate_address_test();
-     }
 }

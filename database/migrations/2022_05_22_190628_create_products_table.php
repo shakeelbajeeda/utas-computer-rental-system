@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('brand');
             $table->decimal('per_hour_rate', 8, 2);
             $table->string('os')->nullable();
@@ -26,8 +26,8 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->bigInteger('user_id');
             $table->tinyInteger('is_rented')->default(0);
-            $table->decimal('advance_money', 8, 2);
-            $table->decimal('insurance_money', 8, 2);
+            $table->decimal('security_deposit', 8, 2)->default(0);
+            $table->decimal('insurance_amount', 8, 2)->default(0);
             $table->timestamps();
         });
     }

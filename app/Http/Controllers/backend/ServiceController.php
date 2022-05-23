@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +27,12 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        //
+        $data['nav_active'] = 'services';
+        $data['title'] = "Add New Service";
+        $data['service'] = $product;
+        return view('supper_admin.services.add')->with($data);
     }
 
     /**
@@ -36,7 +43,21 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+            'brand' => 'required',
+            'per_hour_rate' => 'required',
+            'security_deposit' => 'required',
+            'insurance_amount' => 'required',
+            'image' => 'required|image',
+        ]);
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['image'] = $this->upload_file($request->image, 'service_images');
+        Product::create($data);
+        session()->flash('message', 'Service added successfully');
+        return redirect()->back();
     }
 
     /**

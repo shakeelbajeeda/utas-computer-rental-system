@@ -1,5 +1,6 @@
 <?php
 
+use backend\ServiceController;
 use backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,15 @@ Route::post('/general_delete', 'backend\HomeController@general_delete')->name('g
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home_page');
-Route::get('/services', 'HomeController@index')->name('services');
+Route::get('/services', 'HomeController@services')->name('services');
 Route::get('/edit-profile', 'ProfileController@edit_profile')->name('edit_profile');
 Route::post('/update-profile', 'ProfileController@update_profile')->name('update_profile');
 
 
 Route::resources([
 	'users' => UserController::class,
+	'products' => ServiceController::class,
+
 ]);
 
 Route::get('view-all-staff', 'backend\UserController@staff')->name('view_all_staff');
