@@ -165,6 +165,11 @@
               padding: 0px 0;
           }
       }
+      @media (max-width: 480px) {
+          .logo-width {
+              width: 230px !important;
+          }
+      }
 
       @media screen and (max-width: 768px) {
           .header-nav {
@@ -223,7 +228,7 @@
                   <div class="col-lg-12">
                       <div class="navigation">
                           <nav class="navbar navbar-expand-lg navbar-light ">
-                              <a class="navbar-brand" href="{{ url('/') }}"><img style="width:200px;"
+                              <a class="navbar-brand" href="{{ url('/') }}"><img class="logo-width" style="width:auto;"
                                       src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/logo.png') }}"
                                       alt=""></a>
 

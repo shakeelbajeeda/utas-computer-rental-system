@@ -166,7 +166,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <div class="form-check ml-5">
+                            <div class="form-check ml-5 mt-3">
                                 <input class="form-check-input" type="checkbox" value="" name="is_student" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                   Is Student
@@ -190,13 +190,6 @@
                             Login
                         </a>
                     </div>
-
-                    <!--   <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
-                            Create your Account
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
-                    </div> -->
                 </form>
             </div>
         </div>
