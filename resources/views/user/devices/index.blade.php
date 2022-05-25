@@ -51,11 +51,11 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Recharge History</h2>
+                    <h2 class="page-header-title">Rent Request</h2>
                     <div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('supper_admin_dashboard')}}"><i class="ti ti-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">Recharge History</a></li>
+                            <li class="breadcrumb-item"><a href="#">Rent Requests</a></li>
                             <!-- <li class="breadcrumb-item active">Pending</li> -->
                         </ul>
                     </div>
@@ -78,10 +78,12 @@
                                             <th>Product</th>
                                             <th>Total Hours</th>
                                             <th>Security</th>
+                                            <th>Insurance</th>
                                             <th>Total Amount</th>
                                             <th>Status</th>
                                             <th>Is Returned</th>
                                             <th>Rent Date</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -90,13 +92,19 @@
                                         <tr>
                                             <td>{{@$p->product->title}}</td>
                                             <td>${{$p->total_hours}}</td>
-                                            <td>{{@$p->security}}</td>
-                                            <td>{{@$p->total_price}}</td>
+                                            <td>${{@$p->security}}</td>
+                                            <td>${{@$p->insurance_amount}}</td>
+                                            <td>${{@$p->total_price}}</td>
                                             <td>{{@$p->status}}</td>
                                             <td>{{@$p->is_returned == 1 ? 'Yes' : 'No'}}</td>
 
 
                                             <td>{{date('d-M-Y', strtotime($p->booking_date))}}</td>
+                                            <td class="td-actions">
+                                                @if($p->status == 'Dispatched')
+                                                <a href="javascript:void(0)" onclick="open_modal('{{$p->id}}')">Return Device</a>
+                                                @endif
+                                            </td>
 
                                         </tr>
                                         <?php endforeach ?>
@@ -113,27 +121,39 @@
             </div>
         </div>
     </div>
+    <div id="dispatch_modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Send Return Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="{{route('send_return_request')}}">
+          @csrf
+      <div class="modal-body">
+      <input type="hidden" id="order_id" name="id">
 
+       <p>Are you sure, you want to send return request?</p>
+    </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 @stop
 
 @section('footer_scripts')
     <!-- page level scripts -->
 
     <script type="text/javascript">
-        function add_class_active(e) {
-            $('.remove_active').removeClass('active');
-            if($(e).attr('id')=="active")
-            {
-                $('#expired_packages').hide();
-                $('#active_packages').show();
-            }
-            else
-            {
-                $('#active_packages').hide();
-                $('#expired_packages').show();
-
-            }
-            $(e).addClass('active');
+             function open_modal(id) {
+            $('#order_id').val(id);
+            $('#dispatch_modal').modal('show');
         }
 
         function delete_item(e) {

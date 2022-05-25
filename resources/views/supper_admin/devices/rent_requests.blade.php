@@ -104,9 +104,7 @@
                                             <td>{{date('d-M-Y', strtotime($p->booking_date))}}</td>
 
                                             <td class="td-actions">
-                                                @if($p->status == 'Dispatched')
-                                                   <a href="javascript:void(0)" onclick="open_modal('{{$p->id}}')">Return Device</a>
-                                                @endif
+                                                <a href="javascript:void(0)" onclick="open_modal('{{$p->id}}')">Approve & Dispatch Device</a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
@@ -129,35 +127,22 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Return Device</h4>
+        <h5 class="modal-title">Dispatch Laptop</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{route('return_confirm')}}">
+      <form method="post" action="{{route('approve_request')}}">
           @csrf
       <div class="modal-body">
-        <div class="form-group">
-            <input type="hidden" id="order_id" name="id">
-            <label for="exampleInputEmail1">Return Date</label>
-            <input required type="date" class="form-control" name="return_date">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Damage Amount (if any)</label>
-            <input  type="number" class="form-control" name="damage_amount">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Late Fee (if any)</label>
-            <input  type="number" class="form-control" name="late_fee">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Note (if any)</label>
-            <input  type="textarea" class="form-control" name="note">
-        </div>
-        <p>Note: Security amount will be added back to customer account on return</p>
+      <div class="form-group">
+          <input type="hidden" id="order_id" name="id">
+        <label for="exampleInputEmail1">Dispatch Date</label>
+        <input required type="date" class="form-control" name="dispatch_date">
+    </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Confirm Return</button>
+        <button type="submit" class="btn btn-primary">Confirm Dispatch</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </form>

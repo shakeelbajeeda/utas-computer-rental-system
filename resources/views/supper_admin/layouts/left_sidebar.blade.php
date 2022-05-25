@@ -8,13 +8,13 @@
             <a href="{{route('edit_profile')}}"><i class="la la-columns"></i><span>Update Profile</span></a>
         </li>
         <li class="">
-            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented Request</span></a>
+            <a href="{{route('rent_requests')}}"><i class="la la-columns"></i><span>Rent Requests</span></a>
         </li>
         <li class="">
-            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented Return Request</span></a>
+            <a href="{{route('rent_return_requests')}}"><i class="la la-columns"></i><span>Rent Return Request</span></a>
         </li>
         <li class="">
-            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rented List</span></a>
+            <a href="{{route('all_rental_services')}}"><i class="la la-columns"></i><span>Rent Item List</span></a>
         </li>
         <li class="">
         </li>

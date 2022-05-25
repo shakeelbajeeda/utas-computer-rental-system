@@ -104,9 +104,7 @@
                                             <td>{{date('d-M-Y', strtotime($p->booking_date))}}</td>
 
                                             <td class="td-actions">
-                                                @if($p->status == 'Dispatched')
-                                                   <a href="javascript:void(0)" onclick="open_modal('{{$p->id}}')">Return Device</a>
-                                                @endif
+                                                <a href="javascript:void(0)" onclick="open_modal('{{$p->id}}')">Return Device</a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>

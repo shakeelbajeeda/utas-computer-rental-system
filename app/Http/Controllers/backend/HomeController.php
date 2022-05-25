@@ -24,6 +24,9 @@ class HomeController extends Controller
             $table = $request->table;
             $tbl_field = $request->tbl_field;
             $data[$tbl_field] = $request->status;
+            if($table == 'users' and $id == auth()->user()->id and $request->status == 0) {
+                return $this->send_response(false, 'You cannot block yourself');
+            }
             \DB::table($table)->where('id', $id)->update($data);
            return $this->send_response(true, 'Status Updated Successfully!');
         } catch (\Exception $e) {

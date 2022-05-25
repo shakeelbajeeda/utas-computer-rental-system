@@ -30,4 +30,11 @@ class HomeController extends Controller
         $data['devices'] = Rented_device::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
         return view('user.devices.index')->with($data);
     }
+
+    public function send_return_request(Request $request) {
+        $request->validate(['id' => 'required']);
+        Rented_device::whereId($request->id)->update(['status' => 'Return Requested', 'return_date' => date('Y-m-d H:i:s')]);
+        session()->flash('message', "Return request sent successfully!");
+        return redirect()->back();
+    }
 }

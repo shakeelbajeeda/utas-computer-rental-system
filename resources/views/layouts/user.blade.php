@@ -1,3 +1,16 @@
+
+ @if(auth()->user() and request()->route()->getName() != 'home_page')
+     @if(auth()->user()->is_active == 0)
+         <?php
+           session()->flash('message', "Your Account has been blocked. Please contact to Admin");
+           session()->flash('alert-type', "error");
+
+         ?>
+         <script>window.location = "{{route('home_page')}}";</script>
+     @endif
+ @endif
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
