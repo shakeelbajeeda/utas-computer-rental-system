@@ -51,11 +51,11 @@
         <div class="row">
             <div class="page-header">
                 <div class="d-flex align-items-center">
-                    <h2 class="page-header-title">Rent Requests</h2>
+                    <h2 class="page-header-title">Rent Return Requests</h2>
                     <div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('supper_admin_dashboard')}}"><i class="ti ti-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">Rent Requests</a></li>
+                            <li class="breadcrumb-item"><a href="#">Rent Return Requests</a></li>
                             <!-- <li class="breadcrumb-item active">Pending</li> -->
                         </ul>
                     </div>
