@@ -32,8 +32,8 @@ class UserController extends Controller
     {
         $data['nav_active'] = 'users';
         $data['title'] = 'Staff';
-        $data['active_users'] = User::whereRole('Staff')->where('is_active',1)->get();
-        $data['blocked_users'] = User::whereRole('Staff')->where('is_active',0)->get();
+        $data['active_users'] = User::whereRole('UCR Staff')->where('is_active',1)->get();
+        $data['blocked_users'] = User::whereRole('UCR Staff')->where('is_active',0)->get();
         return view('supper_admin.usermanagement.view_all_users')->with($data);
     }
 

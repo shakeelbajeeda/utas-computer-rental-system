@@ -5,6 +5,9 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\User;
+use App\Models\Product;
+
 class HomeController extends Controller
 {
 
@@ -15,6 +18,13 @@ class HomeController extends Controller
     }
     public function index() {
         $data['nav_active'] = 'dashboard';
+        $data['total_customers'] = User::whereRole('Customer')->count();
+        $data['total_staff'] = User::whereRole('UCR Staff')->count();
+        $data['total_managers'] = User::whereRole('Web Manager')->count();
+        $data['total_users'] = User::count();
+        $data['total_devices'] = Product::count();
+        $data['rented_devices'] = Product::whereIs_rented(1)->count();
+        $data['available_devices'] = Product::whereIs_rented(0)->count();
         return view('supper_admin.dashboard')->with($data);
     }
 

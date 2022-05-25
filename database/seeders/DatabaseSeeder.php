@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
         ]);
         DB::table('users')->insert([
-            'name' => 'waheed',
-            'email'=> 'waheed@nodesol.com',
+            'name' => 'Demo Web Manager',
+            'email'=> 'demo@gmail.com',
             'password' => \Hash::make('123456789'),
             'role'=> 'Web Manager',
-            'total_money' => 45,
+            'total_money' => 0,
             'phone' => '786765676',
-            'address' => 'lahore',
-            'city' => 'lahore',
+            'address' => 'Launceston AU',
+            'city' => 'Launceston',
 
         ]);
     }

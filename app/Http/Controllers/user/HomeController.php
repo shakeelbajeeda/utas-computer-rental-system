@@ -16,6 +16,7 @@ class HomeController extends Controller
     }
     public function index() {
         $data['nav_active'] = 'dashboard';
+        $data['rented_devices'] = Rented_device::whereIs_returned(1)->where('user_id', auth()->user()->id)->count();
         return view('user.dashboard')->with($data);
     }
 

@@ -19,7 +19,7 @@ use Carbon\Carbon;
                 <div class="widget-body">
                     <div class="row">
                         <div class="col-xl-12 d-flex flex-column justify-content-center align-items-center">
-                            <div class="counter">Admin Dashboard</div>
+                            <div class="counter">Customer Dashboard</div>
                             <br>
                             <div class="total-views">
 
@@ -27,42 +27,8 @@ use Carbon\Carbon;
                         </div>
                     </div>
                     <div class="row flex-row">
-                            <!-- Begin Facebook -->
-                            <div class="col-xl-4 col-md-6 col-sm-6">
-                                <div class="widget widget-12 has-shadow">
-                                    <div class="widget-body">
-                                        <div class="media">
-                                            <div class="align-self-center ml-5 mr-5">
-                                                <i class="la la-user"></i>
-                                            </div>
-                                            <div class="media-body align-self-center">
-                                                <div class="title text-facebook"> Customers</div>
-                                                <div class="number">0</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Facebook -->
-                            <!-- Begin Twitter -->
-                            <div class="col-xl-4 col-md-6 col-sm-6">
-                                <div class="widget widget-12 has-shadow">
-                                    <div class="widget-body">
-                                        <div class="media">
-                                            <div class="align-self-center ml-5 mr-5">
-                                                <i class="la la-user"></i>
-                                            </div>
-                                            <div class="media-body align-self-center">
-                                                <div class="title text-twitter">Computers</div>
-                                                <div class="number">0</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Twitter -->
                             <!-- Begin Linkedin -->
-                            <div class="col-xl-4 col-md-6 col-sm-6">
+                            <div class="col-md-6 col-sm-6">
                                 <div class="widget widget-12 has-shadow">
                                     <div class="widget-body">
                                         <div class="media">
@@ -70,8 +36,25 @@ use Carbon\Carbon;
                                                 <i class="la la-star"></i>
                                             </div>
                                             <div class="media-body align-self-center">
-                                                <div class="title text-linkedin">Keyboards</div>
-                                                <div class="number">0</div>
+                                                <div class="title text-linkedin">My Rented Devices</div>
+                                                <div class="number">{{$rented_devices}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Linkedin -->
+                            <!-- Begin Linkedin -->
+                            <div class="col-md-6 col-sm-6">
+                                <div class="widget widget-12 has-shadow">
+                                    <div class="widget-body">
+                                        <div class="media">
+                                            <div class="align-self-center ml-5 mr-5">
+                                                <i class="la la-star"></i>
+                                            </div>
+                                            <div class="media-body align-self-center">
+                                                <div class="title text-linkedin">My Account Balance</div>
+                                                <div class="number text-bold">${{auth()->user()->total_money}}</div>
                                             </div>
                                         </div>
                                     </div>

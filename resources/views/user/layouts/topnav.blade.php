@@ -41,6 +41,7 @@
                         alt="..." class="avatar rounded-circle"></a>
                 <ul aria-labelledby="user" class="user-size dropdown-menu">
                     <li class="welcome">
+                    <p class="text-center">Hi, {{auth()->user()->name}}</p>
 
                         <a href="#" class="edit-profil"><i class="la la-gear"></i></a>
                         <img

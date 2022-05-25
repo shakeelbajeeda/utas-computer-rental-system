@@ -39,12 +39,14 @@
                 <li>
                     <a href="{{route('users.index')}}"><i class="la la-list"></i><span>Customers List</span></a>
                 </li>
+                @if(auth()->user()->role != 'UCR Staff')
                 <li>
                     <a href="{{route('view_all_staff')}}"><i class="la la-list"></i><span>Staff List</span></a>
                 </li>
                 <li>
                     <a href="{{route('web_managers')}}"><i class="la la-list"></i><span>Web Managers List</span></a>
                 </li>
+                @endif
             </ul>
         </li>
 
