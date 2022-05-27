@@ -108,6 +108,8 @@ input[type=number] {
         color: #ff5722;
     }
     .blockUI{border: none!important;}
+    .default-sidebar {
+    background: #3a3631!important;}
  </style>
 
  <!-- preloader -->
@@ -117,7 +119,6 @@ input[type=number] {
 <!-- Begin Preloader -->
 <div id="preloader">
     <div class="canvas">
-        <img style="width: 225px;" src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" class="loader-logo">
         <div class="spinner"></div>
     </div>
 </div>

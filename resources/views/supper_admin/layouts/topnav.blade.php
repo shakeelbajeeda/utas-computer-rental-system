@@ -48,7 +48,8 @@
                             src="{{ asset('public/images/user_images/')}}/{{Auth::user()->image}}"
 
                             <?php else:?>
-                            src="{{ asset(env('PUBLIC_URL'). 'public/assets/images/default_images/user_default.jpg')}}"
+                            src="{{asset(env('PUBLIC_URL').'public/images/default_images/user_default.jpg')}}"
+
                             <?php endif?>
                             alt="..." class="rounded-circle">
                     </li>
