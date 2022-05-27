@@ -12,6 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        // dd(database_path('database.sqlite'));
         $data['services'] = Product::all()->take(10);
         return view('website.index')->with($data);
     }
