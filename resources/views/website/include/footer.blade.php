@@ -1,86 +1,77 @@
-<!--====== FOOTER 3 PART START ======-->
-
-<footer class="footer-3-area">
+<footer class="footer section gray-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="footer-logo text-center pb-45">
-                    <a href="#"><img src="{{ asset(env('PUBLIC_URL') . 'website/assets/images/logo.png') }}"
-                            alt=""></a>
+            <div class="col-lg-4 mr-auto col-sm-6">
+                <div class="widget mb-5 mb-lg-0">
+                    <div class="logo mb-4">
+                        <img src="{{ asset('website/images/logo.png') }}" alt="" class="img-fluid">
+                    </div>
+                    <p>Tasmania is an island of creative and curious minds. No matter where you join us from, you’ll
+                        become part of a welcoming and collaborative community.</p>
+
+                    <ul class="list-inline footer-socials mt-4">
+                        <li class="list-inline-item"><a href=""><i class="icofont-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="icofont-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="icofont-linkedin"></i></a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="footer-item-1 mt-4">
-                    <h4 class="title text-light">University of Tasmania</h4>
-                    <p>
-                        The University of Tasmania is very highly regarded for its commitment to excellence in learning
-                        and teaching. Discipline areas for undergraduate and postgraduate coursework programs are across
-                        five faculties and three specialist institutes: Faculties: College of Arts, Law and Education.
-                    </p>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="widget mb-5 mb-lg-0">
+                    <h4 class="text-capitalize mb-3">Support</h4>
+                    <div class="divider mb-4"></div>
+
+                    <ul class="list-unstyled footer-menu lh-35">
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Company Support </a></li>
+                        <li><a href="#">FAQuestions</a></li>
+                        <li><a href="#">Company Licence</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="footer-item-2 mt-4" style="text-align: center;">
-                    <h4 class="title">Quick Links</h4>
-                    <div class="links-list" style="display: block;">
-                        <ul>
-                            <li><a href="{{ route('home_page') }}">Home</a></li>
-                            <li><a href="{{ route('services') }}">Rental Services</a></li>
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        </ul>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="widget widget-contact mb-5 mb-lg-0">
+                    <h4 class="text-capitalize mb-3">Get in Touch</h4>
+                    <div class="divider mb-4"></div>
+
+                    <div class="footer-contact-block mb-4">
+                        <div class="icon d-flex align-items-center">
+                            <i class="icofont-email mr-3"></i>
+                            <span class="h6 mb-0">Support Available for 24/7</span>
+                        </div>
+                        <h4 class="mt-2"><a href="">Support@utas.com</a></h4>
+                    </div>
+
+                    <div class="footer-contact-block">
+                        <div class="icon d-flex align-items-center">
+                            <i class="icofont-support mr-3"></i>
+                            <span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+                        </div>
+                        <h4 class="mt-2"><a href=""> +61 3 6226 2999</a></h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-8">
-                <div class="footer-item-2 footer-item-3 mt-4">
-                    <h4 class="title">About us</h4>
-                    <p>Tasmania is an island of creative and curious minds. No matter where you join us from, you’ll
-                        become part of a welcoming and collaborative community.</p>
-                </div>
-            </div>
         </div>
-        <div class="row pb-85">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-info mt-3">
-                    <i class="fal fa-map-marker-alt"></i>
-                    <h5 class="title">Address</h5>
-                    <span>UTAS University of Austarlia</span>
+
+        <div class="footer-btm py-4 mt-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <div class="copyright">
+                        © Copyright Reserved to <span class="text-color">Computer Rental System</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-info mt-3">
-                    <i class="fal fa-envelope-open"></i>
-                    <h5 class="title">Email Us</h5>
-                    <span><a href="mailto:info@UTAS.com" style="color: #aeb7ca;"> info@UTAS.com</a></span>
-                    <!--<span><a href="mailto:bilal@UTAS.com" style="color: #aeb7ca;"> bilal@UTAS.com </a></span>-->
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-info mt-3">
-                    <i class="fal fa-phone"></i>
-                    <h5 class="title">Contact Us</h5>
-                    <a href="tel:+923244448940"> <span> 34543233455</span></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-info mt-3">
-                    <i class="fal fa-clock"></i>
-                    <h5 class="title">Opening Hour</h5>
-                    <span>Mon - Friday , 9 am - 5 pm</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footer-copy text-center">
-                    <p>Copyright ©2021. All Rights Reserved By UTAS</p>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="backtop js-scroll-trigger reveal" href="#top">
+                        <i class="icofont-long-arrow-up"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
-<!--====== FOOTER 3 PART ENDS ======-->

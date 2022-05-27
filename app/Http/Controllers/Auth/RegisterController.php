@@ -83,7 +83,7 @@ class RegisterController extends Controller
     {
 
         if(auth()->user()->role == 'Customer'){
-            return route('services');
+            return route('all_computers');
         }else {
             return route('dashboard');
 

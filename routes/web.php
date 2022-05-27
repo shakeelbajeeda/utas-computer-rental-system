@@ -24,7 +24,7 @@ Route::post('/general_delete', 'backend\HomeController@general_delete')->name('g
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home_page');
-Route::get('/services', 'HomeController@services')->name('services');
+Route::get('/all_computers', 'HomeController@all_computers')->name('all_computers');
 Route::get('/edit-profile', 'ProfileController@edit_profile')->name('edit_profile');
 Route::post('/update-profile', 'ProfileController@update_profile')->name('update_profile');
 
@@ -50,13 +50,16 @@ Route::get('view-all-managers', 'backend\UserController@web_managers')->name('we
 
 Route::get('user/dashboard', 'user\HomeController@index')->name('user_dashboard');
 Route::get('user/my-recharge-history', 'user\HomeController@my_recharge_history')->name('my_recharge_history');
-Route::get('/checkout/{id?}', 'HomeController@checkout')->name('checkout_page')->middleware('auth');
+Route::get('/order/{id?}', 'HomeController@order')->name('order_page')->middleware('auth');
 Route::post('/confirm-order', 'CheckoutController@confirm_order')->name('confirm_order')->middleware('auth');
 Route::get('user/my-rented-devices', 'user\HomeController@my_rented_devices')->name('my_rented_devices');
 Route::post('user/return-request', 'user\HomeController@send_return_request')->name('send_return_request');
 
 
-Route::get('/service-detail/{id?}', 'HomeController@single')->name('single');
+Route::get('/computer_detail/{id?}', 'HomeController@computer_detail')->name('computer_detail');
+Route::get('/device_detail/{id?}', 'HomeController@computer_detail')->name('single');
+
+
 
 
 

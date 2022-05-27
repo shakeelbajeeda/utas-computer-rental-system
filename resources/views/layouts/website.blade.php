@@ -35,76 +35,49 @@
     opacity:1!important;
 }
     </style>
-    <!--====== animate css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/animate.css')}}">
-
-    <!--====== Fontawesome css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/all.css')}}">
-
-    <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/magnific-popup.css')}}">
-
-    <!--====== nice select css ======-->
-    <!-- <link rel="stylesheet" href="{{asset('website/assets/css/nice-select.css')}}"> -->
-
-    <!--====== rangeSlider css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/ion.rangeSlider.min.css')}}">
-
-    <!--====== Slick css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/slick.css')}}">
-
-    <!--====== Default css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/default.css')}}">
-
-    <!--====== Style css ======-->
-    <link rel="stylesheet" href="{{asset('website/assets/css/style.css')}}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+    <link rel="stylesheet" href="{{asset('website/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="{{asset('website/plugins/icofont/icofont.min.css')}}">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="{{asset('website/plugins/slick-carousel/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('website/plugins/slick-carousel/slick/slick-theme.css')}}">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{asset('website/css/style.css')}}">
 </head>
 <body>
 
 @include('website.include.header')
 @yield('content')
 @include('website.include.footer')
-  <!--====== jquery js ======-->
-    <script src="{{asset('website/assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
-    <script src="{{asset('website/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
-
-    <!--====== Bootstrap js ======-->
-    <script src="{{asset('website/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('website/assets/js/popper.min.js')}}"></script>
-
-    <!--====== Slick js ======-->
-    <script src="{{asset('website/assets/js/slick.min.js')}}"></script>
-
-    <!--====== counterup js ======-->
-    <script src="{{asset('website/assets/js/jquery.counterup.min.js')}}"></script>
-
-    <!--====== nice select js ======-->
-    <!-- <script src="{{asset('website/assets/js/jquery.nice-select.min.js')}}"></script> -->
-
-    <!--====== waypoints js ======-->
-    <script src="{{asset('website/assets/js/waypoints.min.js')}}"></script>
-
-    <!--====== rangeSlider js ======-->
-    <script src="{{asset('website/assets/js/ion.rangeSlider.min.js')}}"></script>
-
-    <!--====== wow js ======-->
-    <script src="{{asset('website/assets/js/wow.min.js')}}"></script>
-
-    <!--====== Magnific Popup js ======-->
-    <script src="{{asset('website/assets/js/jquery.magnific-popup.min.js')}}"></script>
-
-    <!--====== Ajax Contact js ======-->
-    <script src="{{asset('website/assets/js/ajax-contact.js')}}"></script>
-
-    <!--====== Main js ======-->
-    <script src="{{asset('website/assets/js/main.js')}}"></script>
-
 
 <!--Scroll to top-->
 <script src="{{ asset('public/assets/js/toastr.min.js') }}"></script>
+
+
+
+<script src="{{asset('website/plugins/jquery/jquery.js')}}"></script>
+<!-- Bootstrap 4.3.2 -->
+<script src="{{asset('website/plugins/bootstrap/js/popper.js')}}"></script>
+<script src="{{asset('website/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('website/plugins/counterup/jquery.easing.js')}}"></script>
+<!-- Slick Slider -->
+<script src="{{asset('website/plugins/slick-carousel/slick/slick.min.js')}}"></script>
+<!-- Counterup -->
+<script src="{{asset('website/plugins/counterup/jquery.waypoints.min.js')}}"></script>
+
+<script src="{{asset('website/plugins/shuffle/shuffle.min.js')}}"></script>
+<script src="{{asset('website/plugins/counterup/jquery.counterup.min.js')}}"></script>
+<!-- Google Map -->
+<script src="{{asset('website/plugins/google-map/map.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+<script src="{{asset('website/js/script.js')}}"></script>
+<script src="{{asset('website/js/contact.js')}}"></script>
 
 <script type="text/javascript">
     toastr.options = {

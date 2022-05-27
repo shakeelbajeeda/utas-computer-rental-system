@@ -13,26 +13,24 @@ class HomeController extends Controller
     public function index()
     {
         // dd(database_path('database.sqlite'));
-        $data['services'] = Product::all()->take(10);
+        $data['computers'] = Product::all()->take(7);
         return view('website.index')->with($data);
     }
-    public function services()
+    public function all_computers()
     {
 
         if (request()->has('search')) {
             $search = request()->get('search');
-            $data['services'] = Product::where('brand', 'LIKE', "%$search%")->
-            orWhere('title', 'LIKE', "%$search%")->orWhere('os', 'LIKE', "%$search%")->
-            orWhere('per_hour_rate', 'LIKE', "%$search%")->get();
+            $data['computers'] = Product::where('brand', 'LIKE', "%$search%")->orWhere('title', 'LIKE', "%$search%")->orWhere('os', 'LIKE', "%$search%")->orWhere('per_hour_rate', 'LIKE', "%$search%")->get();
         } else {
-            $data['services'] = Product::all();
+            $data['computers'] = Product::all();
         }
-        return view('website.services')->with($data);
+        return view('website.all_computers')->with($data);
     }
 
-    public function checkout($id)
+    public function order($id)
     {
-        $data['service'] = Product::findOrFail($id);
+        $data['computer'] = Product::findOrFail($id);
         return view('website.order')->with($data);
     }
 
@@ -54,9 +52,9 @@ class HomeController extends Controller
         $this->send_general_email($mail_data);
         return redirect()->back();
     }
-    public function single($id)
+    public function computer_detail($id)
     {
-        $data['service'] = Product::findOrFail($id);
-        return view('website.service_detail')->with($data);
+        $data['computer'] = Product::findOrFail($id);
+        return view('website.computer_detail')->with($data);
     }
 }

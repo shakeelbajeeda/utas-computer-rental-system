@@ -20,10 +20,10 @@
             <!-- End Toggle -->
             <a href="{{url('/')}}" class="navbar-brand">
                 <div class="brand-image brand-big">
-                    <img src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" style="width:auto;" alt="logo" class="logo-big">
+                    <img src="{{ asset('website/images/logo.png') }}" style="width:auto;" alt="logo" class="logo-big">
                 </div>
                 <div class="brand-image brand-small">
-                    <img src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/logo.png')}}" alt="logo" style="width:185px;" class="logo-small">
+                    <img src="{{ asset('website/images/logo.png') }}" alt="logo" width="200px">
                 </div>
             </a>
 
@@ -36,7 +36,7 @@
                         src="{{ asset('public/images/user_images/')}}/{{Auth::user()->image}}"
 
                         <?php else:?>
-                        src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/user.jpg')}}"
+                        src="{{asset(env('PUBLIC_URL').'public/images/default_images/user_default.jpg')}}"
                         <?php endif?>
                         alt="..." class="avatar rounded-circle"></a>
                 <ul aria-labelledby="user" class="user-size dropdown-menu">
@@ -48,7 +48,7 @@
                             src="{{ asset('public/images/user_images/')}}/{{Auth::user()->image}}"
 
                             <?php else:?>
-                            src="{{ asset(env('PUBLIC_URL'). 'website/assets/images/user.jpg')}}"
+                            src="{{ asset(env('PUBLIC_URL'). 'public/assets/images/default_images/user_default.jpg')}}"
                             <?php endif?>
                             alt="..." class="rounded-circle">
                     </li>
